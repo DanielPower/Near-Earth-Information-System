@@ -11,3 +11,7 @@ export const createPlanet = async (req, res) => {
   Planet.create(req.body);
   res.status(httpStatus.CREATED).send();
 };
+
+export const removePlanet = async () => {
+;s;ldkfjasoeifha;selfh
+}
