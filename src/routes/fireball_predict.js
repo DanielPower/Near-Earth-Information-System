@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import { FindByDate } from "../controllers/planet.controller.js";
+import { FindByDate } from "../controllers/fireball_predict.controller.js";
 
 const fbPredRouter = Router();
 

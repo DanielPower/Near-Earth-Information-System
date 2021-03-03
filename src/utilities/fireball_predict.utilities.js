@@ -14,8 +14,13 @@ export const parse_fireball_predictions = async (req, res) => {
       des,
       energy,
       ip,
-      date,
+      date: date.split(".")[0],
+      year: parseInt(date.split("-")[0], 10),
       dist,
+    }).catch((error) => {
+      if (error.code !== 11000) {
+        throw error;
+      }
     });
   });
 };
