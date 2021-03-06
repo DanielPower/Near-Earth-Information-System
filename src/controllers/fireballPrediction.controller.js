@@ -1,9 +1,8 @@
 import dayjs from "dayjs";
-import httpStatus from "http-status";
 
 import FireballPredict from "../models/fireball_predict.model.js";
 
-export const FindByDate = async (req, res) => {
+export const findByDate = async (req, res) => {
   const year = parseInt(req.query.year, 10);
   let predictions = await FireballPredict.findByDate(year);
   res.send(
