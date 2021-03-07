@@ -2,14 +2,14 @@ import axios from "axios";
 import dayjs from "dayjs";
 
 
-//client sourced API call
+//Twitter API call
 export const getNEOs = async (req, res) => {
 
-  //variables taken in by request
-  const { sortby, minDistance, maxDistance, classification, minDate, maxDate, limit } = req.params;
+    const {  } = req.params;
 
-  //basic request, altered by variables
-  const { data: { data: NEOs } } = await axios.get('https://ssd-api.jpl.nasa.gov/cad.api', {
+    //basic request
+    // possible request format: GET https://api.twitter.com/1.1/statuses/lookup.json?id=20,1050118621198921728
+  const { data: { data: tweets } } = await axios.get('https://api.twitter.com/1.1/statuses/lookup.json', {
     params: {
       //variables used to make request
       "dist-min": minDistance,
@@ -23,5 +23,5 @@ export const getNEOs = async (req, res) => {
   });
   
   //send response from API
-  res.send(NEOs);
+  res.send(tweets);
 };
