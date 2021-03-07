@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const { Schema, model } = mongoose;
 
-const fireballPredictSchema = new Schema({
+const fireballPredictionSchema = new Schema({
   des: { type: String, required: true },
   energy: { type: String, required: true },
   ip: { type: String, required: true },
@@ -11,16 +11,16 @@ const fireballPredictSchema = new Schema({
   dist: { type: String, required: true },
 });
 
-fireballPredictSchema.index(
+fireballPredictionSchema.index(
   { des: 1, energy: 1, ip: 1, date: 1, dist: 1 },
   { unique: true },
 );
 
-const FireballPredict = model("FireballPredict", fireballPredictSchema);
+const FireballPrediction = model("FireballPredict", fireballPredictionSchema);
 
-FireballPredict.findByDate = async (search_year) =>
-  await FireballPredict.find({
+FireballPrediction.findByDate = async (search_year) =>
+  await FireballPrediction.find({
     year: search_year,
   });
 
-export default FireballPredict;
+export default FireballPrediction;
