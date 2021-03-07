@@ -1,7 +1,7 @@
 import axios from "axios";
 import mongoose from "mongoose";
 
-import NHATS from "../models/nhat.model.js";
+import NHATS from "../models/NHATS.model.js";
 
 await mongoose.connect("mongodb://localhost:27017/nasa");
 
