@@ -16,7 +16,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "scrape-fireballs": "node src/scripts/scrapeFireballPredictions.js"
+    "scrape-fireballs": "node src/scripts/scrapeFireballPredictions.js",
+    "scrape-nhats": "node src/scripts/scrapeNHATS.js"
   },
   "author": "csg,jdp,pth",
   "license": "ISC"
