@@ -1,9 +1,11 @@
 import { Router } from "express";
 
-import planetsRouter from "./planets.js";
+import fireballPredictionRouter from "./fireballPrediction.js";
+import planetRouter from "./planet.js";
 
 const router = Router();
 
-router.use("/planets", planetsRouter);
+router.use("/planets", planetRouter);
+router.use("/predictions", fireballPredictionRouter);
 
 export default router;
