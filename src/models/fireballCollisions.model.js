@@ -24,8 +24,4 @@ const FireballCollisions = model(
   fireballCollisionsSchema,
 );
 
-//returns all collisions
-FireballCollisions.findByDistance = async () =>
-  await FireballCollisions.find({});
-
 export default FireballCollisions;

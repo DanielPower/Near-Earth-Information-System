@@ -6,7 +6,7 @@ export const findByDistance = async (req, res) => {
   const userLon = req.query.lon;
   const searchDistance = req.query.distance;
   //return collisions stored in db
-  let withinSearchDistance = await FireballCollisions.findByDistance();
+  let withinSearchDistance = await FireballCollisions.find({});
   const radius = 6371e3; //earth's radius metres
   const lat1 = (userLat * Math.PI) / 180; //convert from degrees to radians
   let collisionsWithinDistance = []; //stores all collisions within specified distance
