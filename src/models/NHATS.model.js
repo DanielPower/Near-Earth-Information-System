@@ -15,9 +15,8 @@ const NHATS = model("NHATS", NHATSSchema);
 
 NHATS.findByDateRange = async (minDate, maxDate) =>
   await NHATS.find({
-    $not: {
-      $or: [{ obsStart: { $gt: maxDate } }, { obsEnd: { $lt: minDate } }],
-    },
+    obsStart: { $not: { $gt: maxDate } },
+    obsEnd: { $not: { $lt: minDate } },
   });
 
 export default NHATS;
