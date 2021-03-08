@@ -69,14 +69,12 @@ describe("FireballPrediction", function () {
         0.001,
         100,
       );
-
-      const fireballPredictionsYearMin2100YearMax2101 = await FireballPrediction.FindByFilter(
+      const fireballPredictionsYearMin2100YearMax2101 = await FireballPrediction.findByFilter(
         2100,
         2101,
         0.001,
         100,
       );
-
       const fireballPredictionsYearsWithProbability = await FireballPrediction.findByFilter(
         2100,
         2100,
@@ -93,27 +91,24 @@ describe("FireballPrediction", function () {
       assert.strictEqual(fireballPredictionsForYear2101[0].des, "1994 GV");
       assert.strictEqual(fireballPredictionsForYear2102.length, 0);
       assert.strictEqual(fireballPredictionsYearMin2100YearMax2101.length, 3);
-      assert.strictEqual(
-        fireballPredictionsYearMin2100YearMax2101[0].des,
-        "1994 GV",
-      );
-      assert.strictEqual(
-        fireballPredictionsYearMin2100YearMax2101[1].des,
-        "2020 GD",
-      );
-      assert.strictEqual(
-        fireballPredictionsYearMin2100YearMax2101[2].des,
-        "1982 HD",
+      assert(
+        ["2020 GD", "1982 HD", "1994 GV"].every((des1) =>
+          fireballPredictionsYearMin2100YearMax2101.some(
+            ({ des: des2 }) => des1 === des2,
+          ),
+        ),
       );
       assert.strictEqual(fireballPredictionsYearsWithProbability.length, 1);
       assert.strictEqual(
-        fireballPredictionsYearsWithProbability.des[0],
+        fireballPredictionsYearsWithProbability[0].des,
         "2020 GD",
       );
-      assert.strictEqual(fireballPredictionsProbability.length, 3);
-      assert.strictEqual(fireballPredictionsProbability.des[0], "1994 GV");
-      assert.strictEqual(fireballPredictionsProbability.des[1], "2019 GR3");
-      assert.strictEqual(fireballPredictionsProbability[2], "2020 GD");
+      assert.strictEqual(fireballPredictionsProbability.length, 2);
+      assert(
+        ["2020 GD", "1994 GV"].every((des1) =>
+          fireballPredictionsProbability.some(({ des: des2 }) => des1 === des2),
+        ),
+      );
     });
   });
   describe("route", function () {

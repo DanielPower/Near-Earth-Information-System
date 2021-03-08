@@ -50,7 +50,7 @@ describe("FireballCollisions", function () {
   });
   describe("route", function () {
     it("Should find by year", async function () {
-      await FireballPrediction.create([
+      await FireballCollisions.create([
         {
           des: "1994 GV",
           energy: "3.959e-02",
