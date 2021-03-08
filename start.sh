@@ -1,4 +1,4 @@
-#!bin/sh
+#!/bin/sh
 
 # Use production database
 export DB_NAME='nasa'

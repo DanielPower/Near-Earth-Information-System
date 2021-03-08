@@ -1,9 +1,9 @@
 import { Router } from "express";
 
-import { findByDate } from "../controllers/fireballPrediction.controller.js";
+import { findByFilter } from "../controllers/fireballPrediction.controller.js";
 
 const fireballPredictionRouter = Router();
 
-fireballPredictionRouter.get("/", findByDate);
+fireballPredictionRouter.get("/", findByFilter);
 
 export default fireballPredictionRouter;
