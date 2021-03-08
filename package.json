@@ -7,16 +7,25 @@
   "dependencies": {
     "axios": "^0.21.1",
     "dayjs": "^1.10.4",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "http-status": "^1.5.0",
+    "mocha": "^8.3.1",
     "mongoose": "^5.11.19"
   },
   "devDependencies": {
+    "@babel/core": "^7.13.8",
+    "@babel/eslint-parser": "^7.13.8",
+    "@babel/plugin-syntax-top-level-await": "^7.12.13",
+    "eslint": "^7.21.0",
+    "eslint-plugin-mocha": "^8.1.0",
     "prettier": "^2.2.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "scrape-fireballs": "node src/scripts/scrapeFireballPredictions.js"
+    "start": "DB_NAME=nasa node app.js",
+    "test": "DB_NAME=nasa-test node app.js & mocha",
+    "scrape-fireballs": "node src/scripts/scrapeFireballPredictions.js",
+    "scrape-nhats": "node src/scripts/scrapeNHATS.js"
   },
   "author": "csg,jdp,pth",
   "license": "ISC"
