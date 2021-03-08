@@ -14,7 +14,7 @@ const NHATSSchema = new Schema({
 const NHATS = model("NHATS", NHATSSchema);
 
 NHATS.findByDateRange = async (minDate, maxDate) =>
-  await FireballPredict.find({
+  await NHATS.find({
     $not: {
       $or: [{ obsStart: { $gt: maxDate } }, { obsEnd: { $lt: minDate } }],
     },
