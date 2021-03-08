@@ -2,8 +2,8 @@ import { Router } from "express";
 
 import { getNHATSs } from "../controllers/NHATS.controller.js";
 
-const fireballPredictionRouter = Router();
+const NHATSRouter = Router();
 
-fireballPredictionRouter.get("/", getNHATSs);
+NHATSRouter.get("/", getNHATSs);
 
-export default fireballPredictionRouter;
+export default NHATSRouter;
