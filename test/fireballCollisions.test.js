@@ -21,58 +21,40 @@ describe("FireballCollisions", function () {
   beforeEach(async function () {
     await FireballCollisions.collection.drop();
   });
-  describe("model", function () {
-    it("Should find by year", async function () {
+  describe("route", function () {
+    it("should return collisions in the list within the distance specified from the users lat lon coordinates", async function () {
       await FireballCollisions.create([
         {
-          date: "",
-          impactEnergy: "",
-          lat: "",
-          lon: "",
+          date: "2021-02-28 03:47:37",
+          impactEnergy: "0.098",
+          lat: "9.2",
+          lon: "-64.1",
         },
         {
-          date: "",
-          impactEnergy: "",
-          lat: "",
-          lon: "",
+          date: "2021-01-31 02:59:39",
+          impactEnergy: "0.72",
+          lat: "5.2",
+          lon: "115.2",
+        },
+        {
+          date: "1988-04-15 03:03:10",
+          impactEnergy: "14",
+          lat: "-34.5",
+          lon: "-175.8",
+        },
+        {
+          date: "2010-07-06 23:54:43",
+          impactEnergy: "14",
+          lat: "-34.1",
+          lon: "-174.5",
         },
       ]);
-      const fireballPredictionsFor2101 = await FireballCollisions.findByDate(
-        2101,
-      );
-      const fireballPredictionsFor2102 = await FireballCollisions.findByDate(
-        2102,
-      );
-      assert.strictEqual(fireballPredictionsFor2101.length, 1);
-      assert.strictEqual(fireballPredictionsFor2101[0].des, "1994 GV");
-      assert.strictEqual(fireballPredictionsFor2102.length, 0);
-    });
-  });
-  describe("route", function () {
-    it("Should find by year", async function () {
-      await FireballPrediction.create([
-        {
-          des: "1994 GV",
-          energy: "3.959e-02",
-          ip: "3.833e-05",
-          date: new Date("2101-04-12"),
-          year: 2101,
-          dist: "0.841",
-        },
-        {
-          des: "2019 GR3",
-          energy: "8.126e-02",
-          ip: "1.119e-04",
-          date: new Date("2080-08-31"),
-          year: 2080,
-          dist: "0.629",
-        },
-      ]);
-      const { data: fireballPredictions } = await get("/predictions", {
-        params: { year: 2080 },
+      const { data: fireballCollisions } = await get("/collisions", {
+        params: { lat: "-34.0", lon: "-175.0", distance: 100 },
       });
-      assert.strictEqual(fireballPredictions.length, 1);
-      assert.strictEqual(fireballPredictions[0].des, "2019 GR3");
+      assert.strictEqual(fireballCollisions.length, 2);
+      assert.strictEqual(fireballCollisions[0].date, "1988-04-15 03:03:10");
+      assert.strictEqual(fireballCollisions[1].date, "2010-07-06 23:54:43");
     });
   });
 });
