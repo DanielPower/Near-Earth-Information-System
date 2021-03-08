@@ -25,7 +25,8 @@
     "start": "DB_NAME=nasa node app.js",
     "test": "DB_NAME=nasa-test node app.js & mocha",
     "scrape-fireballs": "node src/scripts/scrapeFireballPredictions.js",
-    "scrape-nhats": "node src/scripts/scrapeNHATS.js"
+    "scrape-nhats": "node src/scripts/scrapeNHATS.js",
+    "scrape-collisions": "node src/scripts/scrapeFireballCollisions.js"
   },
   "author": "csg,jdp,pth",
   "license": "ISC"
