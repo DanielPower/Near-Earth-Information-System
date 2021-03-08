@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 
-import FireballPredict from "../models/fireball_predict.model.js";
+import FireballPredict from "../models/fireballPrediction.model.js";
 
 export const findByDate = async (req, res) => {
   const year = parseInt(req.query.year, 10);
