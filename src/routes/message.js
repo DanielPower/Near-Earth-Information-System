@@ -5,8 +5,8 @@ import { postMessage } from "../controllers/message.controller.js";
 
 const MessageRouter = Router();
 
-NHATSRouter.post("/", postMessage);
-NHATSRouter.get("/", getMessage);
+MessageRouter.post("/", postMessage);
+MessageRouter.get("/", getMessage);
 
 
 

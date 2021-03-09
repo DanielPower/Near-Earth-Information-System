@@ -10,18 +10,14 @@ export const postMessage = async (req, res) => {
     new Date(inDate),
   );
   
-  res.create(
-    title: inTitle,
-    body: inBody,
-    date: new Date(inDate),
-   );
+  res.send(message);
+
 };
 
-export const getMessage = async (req, res) => {
-    const {inTitle} = req.query;
+export const getMessage = async (res) => {
     
     const message = await messages.getMessage(
-        new String(inTitle),
+        
     );
     res.send(
         message.map(({ title, body, date, }) => ({
