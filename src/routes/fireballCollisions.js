@@ -1,9 +1,13 @@
 import { Router } from "express";
 
-import { findByDistance } from "../controllers/fireballCollisions.controller.js";
+import {
+  findByDistance,
+  getCountryImpactCounts,
+} from "../controllers/fireballCollisions.controller.js";
 
 const fireballCollisionsRouter = Router();
 
 fireballCollisionsRouter.get("/", findByDistance);
+fireballCollisionsRouter.get("/country", getCountryImpactCounts);
 
 export default fireballCollisionsRouter;
