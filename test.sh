@@ -3,9 +3,6 @@
 # Use testing database
 export DB_NAME='nasa-test'
 
-# Do not scrape NASA APIs
-export SCRAPE='false'
-
 # Launch server
 node app.js &
 NODE_PID=$!

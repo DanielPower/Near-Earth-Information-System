@@ -10,7 +10,7 @@ dotenv.config();
 await mongoose.connect(`mongodb://localhost:27017/${process.env.DB_NAME}`);
 
 // Scrape NASA APIs once upon launching the app, and then every hour afterward
-if (process.env.SCRAPE !== "false") {
+if (process.env.SCRAPE == "true") {
   scrapeAll();
   schedule.scheduleJob("0 * * * *", () => {
     scrapeAll();
