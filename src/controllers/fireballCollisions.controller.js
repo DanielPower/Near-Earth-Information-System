@@ -29,7 +29,7 @@ export const findByDistance = async (req, res) => {
       //check if distance between user and collision is less than search distance specified
       //create an object to return to user that includes distance away
       let obj = {
-        item: item.date,
+        date: item.date,
         impactEnergy: item.impactEnergy,
         lat: item.lat,
         lon: item.lon,
