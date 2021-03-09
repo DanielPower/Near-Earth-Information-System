@@ -14,7 +14,9 @@ const scrapeFireballCollisions = async () => {
   // Save fireball collision data to mongodb
   const CollisionsPromises = [];
   for (let i = 0; i < collisions.length; i++) {
-    console.log(`Scraping fireball impact ${i} / ${collisions.length}`);
+    console.log(
+      `Scraping fireball impact ${i} / ${collisions.length}. This may take some time`,
+    );
     let [date, _energy, impactEnergy, lat, latDir, lon, lonDir] = collisions[i];
     // Do not add collisions with missing data
     if ([date, impactEnergy, lat, latDir, lon, lonDir].includes(null)) {
@@ -39,7 +41,6 @@ const scrapeFireballCollisions = async () => {
     );
     const country =
       response.data?.data?.find(({ country }) => country)?.country || null;
-    console.log(country);
 
     CollisionsPromises.push(
       FireballCollisions.create({
