@@ -16,6 +16,8 @@ const scrapeFireballPredictions = async () => {
   // Save fireball prediction data to mongodb
   const fireballPromises = [];
   fireballs.forEach(({ des, energy, ip, date, dist }) => {
+    let decimalProb = Math.pow(ip.split("e")[0], ip.split("e")[1]) * 100;
+    ip = decimalProb;
     fireballPromises.push(
       FireballPrediction.create({
         des,

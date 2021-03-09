@@ -22,34 +22,93 @@ describe("FireballPrediction", function () {
     await FireballPrediction.collection.drop();
   });
   describe("model", function () {
-    it("Should find by year", async function () {
+    it("Should find by minimum year, maximum year, minimum probability, and maximum probability", async function () {
       await FireballPrediction.create([
         {
           des: "1994 GV",
           energy: "3.959e-02",
-          ip: "3.833e-05",
+          ip: "100", //uhoh
           date: new Date("2101-04-12"),
           year: 2101,
           dist: "0.841",
         },
         {
           des: "2019 GR3",
-          energy: "8.126e-02",
-          ip: "1.119e-04",
+          energy: "0.137",
+          ip: "0.001",
           date: new Date("2080-08-31"),
           year: 2080,
           dist: "0.629",
         },
+        {
+          des: "2020 GD",
+          energy: "2.8373-03",
+          ip: "0.138",
+          date: new Date("2100-01-01"),
+          year: 2100,
+          dist: "0.345",
+        },
+        {
+          des: "1982 HD",
+          energy: "6.9283-02",
+          ip: "0.0238",
+          date: new Date("2100-03-28"),
+          year: 2100,
+          dist: "0.287",
+        },
       ]);
-      const fireballPredictionsFor2101 = await FireballPrediction.findByDate(
+      const fireballPredictionsForYear2101 = await FireballPrediction.findByFilter(
         2101,
+        2101,
+        0.001,
+        100,
       );
-      const fireballPredictionsFor2102 = await FireballPrediction.findByDate(
+      const fireballPredictionsForYear2102 = await FireballPrediction.findByFilter(
         2102,
+        2102,
+        0.001,
+        100,
       );
-      assert.strictEqual(fireballPredictionsFor2101.length, 1);
-      assert.strictEqual(fireballPredictionsFor2101[0].des, "1994 GV");
-      assert.strictEqual(fireballPredictionsFor2102.length, 0);
+      const fireballPredictionsYearMin2100YearMax2101 = await FireballPrediction.findByFilter(
+        2100,
+        2101,
+        0.001,
+        100,
+      );
+      const fireballPredictionsYearsWithProbability = await FireballPrediction.findByFilter(
+        2100,
+        2100,
+        0.1,
+        0.2,
+      );
+      const fireballPredictionsProbability = await FireballPrediction.findByFilter(
+        0,
+        9999,
+        0.1,
+        100,
+      );
+      assert.strictEqual(fireballPredictionsForYear2101.length, 1);
+      assert.strictEqual(fireballPredictionsForYear2101[0].des, "1994 GV");
+      assert.strictEqual(fireballPredictionsForYear2102.length, 0);
+      assert.strictEqual(fireballPredictionsYearMin2100YearMax2101.length, 3);
+      assert(
+        ["2020 GD", "1982 HD", "1994 GV"].every((des1) =>
+          fireballPredictionsYearMin2100YearMax2101.some(
+            ({ des: des2 }) => des1 === des2,
+          ),
+        ),
+      );
+      assert.strictEqual(fireballPredictionsYearsWithProbability.length, 1);
+      assert.strictEqual(
+        fireballPredictionsYearsWithProbability[0].des,
+        "2020 GD",
+      );
+      assert.strictEqual(fireballPredictionsProbability.length, 2);
+      assert(
+        ["2020 GD", "1994 GV"].every((des1) =>
+          fireballPredictionsProbability.some(({ des: des2 }) => des1 === des2),
+        ),
+      );
     });
   });
   describe("route", function () {
@@ -58,22 +117,38 @@ describe("FireballPrediction", function () {
         {
           des: "1994 GV",
           energy: "3.959e-02",
-          ip: "3.833e-05",
+          ip: "100", //uhoh
           date: new Date("2101-04-12"),
           year: 2101,
           dist: "0.841",
         },
         {
           des: "2019 GR3",
-          energy: "8.126e-02",
-          ip: "1.119e-04",
+          energy: "0.137",
+          ip: "0.001",
           date: new Date("2080-08-31"),
           year: 2080,
           dist: "0.629",
         },
+        {
+          des: "2020 GD",
+          energy: "2.8373-03",
+          ip: "0.138",
+          date: new Date("2100-01-01"),
+          year: 2100,
+          dist: "0.345",
+        },
+        {
+          des: "1982 HD",
+          energy: "6.9283-02",
+          ip: "0.0238",
+          date: new Date("2100-03-28"),
+          year: 2100,
+          dist: "0.287",
+        },
       ]);
       const { data: fireballPredictions } = await get("/predictions", {
-        params: { year: 2080 },
+        params: { yearMin: 2080, yearMax: 2080, probMin: 0, probMax: 100 },
       });
       assert.strictEqual(fireballPredictions.length, 1);
       assert.strictEqual(fireballPredictions[0].des, "2019 GR3");

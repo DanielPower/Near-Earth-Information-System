@@ -18,9 +18,15 @@ fireballPredictionSchema.index(
 
 const FireballPrediction = model("FireballPredict", fireballPredictionSchema);
 
-FireballPrediction.findByDate = async (search_year) =>
+FireballPrediction.findByFilter = async (
+  search_year_min,
+  search_year_max,
+  search_prob_min,
+  search_prob_max,
+) =>
   await FireballPrediction.find({
-    year: search_year,
+    year: { $gte: search_year_min, $lte: search_year_max },
+    ip: { $gte: search_prob_min, $lte: search_prob_max },
   });
 
 export default FireballPrediction;
