@@ -19,4 +19,6 @@ NHATS.findByDateRange = async (minDate, maxDate) =>
     obsEnd: { $not: { $lt: minDate } },
   });
 
+
+
 export default NHATS;

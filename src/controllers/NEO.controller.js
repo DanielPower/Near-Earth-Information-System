@@ -25,3 +25,4 @@ export const getNEOs = async (req, res) => {
   //send response from API
   res.send(NEOs);
 };
+
