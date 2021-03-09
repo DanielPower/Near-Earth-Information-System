@@ -10,12 +10,12 @@ const messageSchema = new Schema({
 
 const messages = model("Message", messageSchema);
 
-messages.postMessage = async (inTitle, inBody, inDate) =>
-    await messages.create({
-        title: inTitle, 
-        body: inBody, 
-        date: inDate,
-  });
+// messages.create = async (inTitle, inBody, inDate) =>
+//     await messages.insertMany({
+//         title: inTitle, 
+//         body: inBody, 
+//         date: inDate,
+//   });
 
 messages.getMessage = async (retrieve) =>
     await messages.find({
