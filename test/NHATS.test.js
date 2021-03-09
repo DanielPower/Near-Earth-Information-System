@@ -87,7 +87,6 @@ describe("NHATS", function () {
       const { data: NHATSData } = await get("/nhats", {
         params: { minDate: "2021-01-01", maxDate: "2023-06-06" },
       });
-      console.log(NHATSData);
       assert.strictEqual(NHATSData.length, 2);
     });
   });

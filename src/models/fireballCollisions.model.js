@@ -7,6 +7,7 @@ const fireballCollisionsSchema = new Schema({
   impactEnergy: { type: String, required: true },
   lat: { type: String, required: true },
   lon: { type: String, required: true },
+  country: { type: String },
 });
 
 fireballCollisionsSchema.index(

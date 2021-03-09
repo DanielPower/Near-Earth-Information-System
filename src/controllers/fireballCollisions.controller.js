@@ -1,6 +1,7 @@
 import FireballCollisions from "../models/fireballCollisions.model.js";
 
 export const findByDistance = async (req, res) => {
+  res.create();
   //queries entered by user
   const userLat = req.query.lat;
   const userLon = req.query.lon;
@@ -40,4 +41,17 @@ export const findByDistance = async (req, res) => {
   });
   collisionsWithinDistance.sort((a, b) => (a.dist > b.dist ? 1 : -1)); //sort list to return closest collision first
   res.send(collisionsWithinDistance);
+};
+
+export const getCountryImpactCounts = async (_req, res) => {
+  const fireballs = await FireballCollisions.find({});
+  const countries = {};
+  fireballs.forEach(({ country }) => {
+    if (!countries[country]) {
+      countries[country] = 0;
+    }
+    countries[country] += 1;
+  });
+
+  res.send(countries);
 };
