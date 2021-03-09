@@ -29,30 +29,33 @@ describe("FireballCollisions", function () {
           impactEnergy: "0.098",
           lat: "9.2",
           lon: "-64.1",
+          country: "United States",
         },
         {
           date: "2021-01-31 02:59:39",
           impactEnergy: "0.72",
           lat: "5.2",
           lon: "115.2",
+          country: "United States",
         },
         {
           date: "1988-04-15 03:03:10",
           impactEnergy: "14",
           lat: "-34.5",
           lon: "-175.8",
+          country: "United States",
         },
         {
           date: "2010-07-06 23:54:43",
           impactEnergy: "14",
           lat: "-34.1",
           lon: "-174.5",
+          country: "United States",
         },
       ]);
       const { data: fireballCollisions } = await get("/collisions", {
         params: { lat: "-34.0", lon: "-175.0", distance: 100 },
       });
-      console.log(fireballCollisions);
       assert.strictEqual(fireballCollisions.length, 2);
       assert(
         ["1988-04-15 03:03:10", "2010-07-06 23:54:43"].every((date1) =>
