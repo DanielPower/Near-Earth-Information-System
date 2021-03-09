@@ -52,9 +52,13 @@ describe("FireballCollisions", function () {
       const { data: fireballCollisions } = await get("/collisions", {
         params: { lat: "-34.0", lon: "-175.0", distance: 100 },
       });
+      console.log(fireballCollisions);
       assert.strictEqual(fireballCollisions.length, 2);
-      assert.strictEqual(fireballCollisions[0].date, "1988-04-15 03:03:10");
-      assert.strictEqual(fireballCollisions[1].date, "2010-07-06 23:54:43");
+      assert(
+        ["1988-04-15 03:03:10", "2010-07-06 23:54:43"].every((date1) =>
+          fireballCollisions.some(({ date: date2 }) => date1 === date2),
+        ),
+      );
     });
   });
 });
