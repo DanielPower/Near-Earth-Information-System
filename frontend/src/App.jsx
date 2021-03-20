@@ -1,11 +1,15 @@
 import React from 'react';
+import Widget from './components/Widget';
 
-function App() {
+const App = () => {
+  const widgets = ['foo', 'bar', 'tar'];
   return (
-    <div>
-      Hello World
-    </div>
+    <>
+      {widgets.map((content) => (
+        <Widget>{content}</Widget>
+      ))}
+    </>
   );
-}
+};
 
 export default App;
