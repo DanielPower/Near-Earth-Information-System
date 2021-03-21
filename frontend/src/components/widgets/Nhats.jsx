@@ -1,17 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
+import useAxios from 'axios-hooks';
 import ScrollableList from '../ScrollableList/ScrollableList';
 
 const Nhats = () => {
-  const [nhatss, setNhatss] = useState([]);
+  const [{ data, loading, error }] = useAxios(
+    'https://ssd-api.jpl.nasa.gov/nhats.api',
+  );
 
-  useEffect(() => {
-    axios
-      .get('https://ssd-api.jpl.nasa.gov/nhats.api')
-      .then(({ data: { data } }) => {
-        setNhatss(data);
-      });
-  }, []);
+  if (loading) return 'loading';
+  if (error) return 'error';
+
+  const { data: nhatss } = data;
 
   return (
     <ScrollableList>
