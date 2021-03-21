@@ -12,7 +12,13 @@ const Nhats = () => {
       });
   }, []);
 
-  return <>{nhatss.map((nhats) => nhats.des)}</>;
+  return (
+    <>
+      {nhatss.map((nhats) => (
+        <div>{nhats.des}</div>
+      ))}
+    </>
+  );
 };
 
 export default Nhats;
