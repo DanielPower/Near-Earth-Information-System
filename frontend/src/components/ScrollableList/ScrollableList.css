@@ -1,0 +1,12 @@
+.scrollableList {
+  overflow-y: auto;
+  max-height: 300px;
+}
+
+.even {
+  background-color: #2C323D
+}
+
+.odd {
+  background-color: #282C34
+}

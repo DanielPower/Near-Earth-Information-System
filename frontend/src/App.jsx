@@ -3,11 +3,11 @@ import Widget from './components/Widget';
 import Nhats from './components/widgets/Nhats';
 
 const App = () => {
-  const widgets = [{ key: 'nhats', component: Nhats }];
+  const widgets = [{ title: 'NHATS', key: 'nhats', component: Nhats }];
   return (
     <>
       {widgets.map((widget) => (
-        <Widget>
+        <Widget title={widget.title}>
           <widget.component key={widget.key} />
         </Widget>
       ))}

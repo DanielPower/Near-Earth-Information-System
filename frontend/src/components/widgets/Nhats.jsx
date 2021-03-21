@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import ScrollableList from '../ScrollableList/ScrollableList';
 
 const Nhats = () => {
   const [nhatss, setNhatss] = useState([]);
@@ -13,11 +14,11 @@ const Nhats = () => {
   }, []);
 
   return (
-    <>
+    <ScrollableList>
       {nhatss.map((nhats) => (
-        <div>{nhats.des}</div>
+        <>{nhats.des}</>
       ))}
-    </>
+    </ScrollableList>
   );
 };
 

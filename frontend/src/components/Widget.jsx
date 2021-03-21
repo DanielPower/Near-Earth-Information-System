@@ -1,6 +1,13 @@
 import React from 'react';
 import './Widget.css';
 
-const Widget = ({ children }) => <div className="widget">{children}</div>;
+const Widget = ({ title, children }) => (
+  <>
+    <div className="widget">
+      <div className="title">{title}</div>
+      {children}
+    </div>
+  </>
+);
 
 export default Widget;
