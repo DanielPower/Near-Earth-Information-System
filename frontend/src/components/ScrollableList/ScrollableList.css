@@ -3,10 +3,6 @@
   max-height: 300px;
 }
 
-.even {
-  background-color: #2C323D
-}
-
-.odd {
+.listItem:hover {
   background-color: #282C34
 }

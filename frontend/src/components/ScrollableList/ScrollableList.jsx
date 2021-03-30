@@ -3,8 +3,8 @@ import './ScrollableList.css';
 
 const ScrollableList = ({ children }) => (
   <div className="scrollableList">
-    {children.map((child, index) => (
-      <div className={index % 2 ? 'odd' : 'even'}>{child}</div>
+    {children.map((child) => (
+      <div className='listItem'>{child}</div>
     ))}
   </div>
 );
