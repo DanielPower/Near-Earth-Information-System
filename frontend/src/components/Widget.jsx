@@ -1,10 +1,11 @@
 import React from 'react';
-import './Widget.css';
+import styles from './Widget.module.css';
 
-const Widget = ({ title, children }) => (
+const Widget = ({ title, subTitle, children }) => (
   <>
-    <div className="widget">
-      <div className="title">{title}</div>
+    <div className={styles.widget}>
+      <div className={styles.title}>{title}</div>
+      {title && <div className={styles.subTitle}>{subTitle}</div>}
       {children}
     </div>
   </>

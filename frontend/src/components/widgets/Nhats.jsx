@@ -1,23 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useAxios from 'axios-hooks';
 import ScrollableList from '../ScrollableList/ScrollableList';
 
 const Nhats = () => {
-  const [{ data, loading, error }] = useAxios(
+  const [selectedNhatsDes, setSelectedNhatsDes] = useState(null);
+  const [{ data: nhatsData, loading: nhatsLoading, error: nhatsError }] = useAxios(
     'https://ssd-api.jpl.nasa.gov/nhats.api',
   );
+  const [{ data: selectedNhatsData, loading: selectedNhatsLoading, error: selectedNhatsError }] = useAxios(null);
 
-  if (loading) return 'loading';
-  if (error) return 'error';
+  if (nhatsLoading) return 'loading';
+  if (nhatsError) return 'error';
 
-  const { data: nhatss } = data;
+  const { data: nhatss } = nhatsData;
 
   return (
-    <ScrollableList>
-      {nhatss.map((nhats) => (
-        <>{nhats.des}</>
-      ))}
-    </ScrollableList>
+    <>
+      {selectedNhatsData ? (
+        <>
+          <button type="button" onClick={() => setSelectedNhatsDes(null)}>
+            Back
+          </button>
+          <div>{selectedNhatsDes}</div>
+        </>
+      ) : (
+        <ScrollableList>
+          {nhatss.map(({ des }) => (
+            <div key={des} onClick={() => setSelectedNhatsDes(des)}>{des}</div>
+          ))}
+        </ScrollableList>
+      )}
+    </>
   );
 };
 
