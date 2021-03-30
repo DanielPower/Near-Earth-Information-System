@@ -2,6 +2,8 @@ import React from 'react';
 import useAxios from 'axios-hooks';
 import ScrollableList from '../ScrollableList/ScrollableList';
 
+
+
 //Today date function from https://stackoverflow.com/questions/1531093/how-do-i-get-the-current-date-in-javascript
 var todayDate = new Date();
 var d = String(todayDate.getDate()).padStart(2,'0');
@@ -15,9 +17,9 @@ todayDate = y + '/' + m + '/' + d;
 //date-min=1900-01-01&date-max=2100-01-01
 const messenger = () => {
   const [{ data, loading, error }] = useAxios(
-    (db.messenger),
+    ('http://localhost:3000/messages'),
   );
-
+  
   if (loading) return 'loading';
   if (error) return 'error';
 
