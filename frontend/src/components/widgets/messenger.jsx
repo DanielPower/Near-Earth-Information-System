@@ -8,19 +8,22 @@ var d = String(todayDate.getDate()).padStart(2,'0');
 var m = String(todayDate.getMonth() + 1).padStart(2, '0');
 var y = todayDate.getFullYear();
 todayDate = y + '/' + m + '/' + d;
-var centuryDate = (y+100) + '/' + m + '/' + d;
+
+//useful for timestamping
 
 
 //date-min=1900-01-01&date-max=2100-01-01
-const Countdown = () => {
+const messenger = () => {
   const [{ data, loading, error }] = useAxios(
-    ('https://ssd-api.jpl.nasa.gov/cad.api?date-min=' + todayDate +'&date-max='+centuryDate),
+    (db.messenger),
   );
 
   if (loading) return 'loading';
   if (error) return 'error';
 
-  const { data: Countdowns } = data;
+  //const { data: } = data;
+  
+  const { data: messages } = data;
 
 
 //need to test, and then ge the time between NEO and today
@@ -28,26 +31,30 @@ const Countdown = () => {
 
   return (
     <>
-  <label for ='NEOclose'>NEO(Near Earth Objects</label>
+  <label for ='messageList'></label>
   
-  {/* i know a div here is bad form,. what else shoudl i use */}
-  <div>
-  Sort by
-  <button id = 'Distance'>Distance</button>
-  <button id = 'NHAs'>NHAs</button>
-  <button id = 'NEAs'>NEAs</button>
-  <button id = 'Comets'>Comets</button>
-  <button id = 'Date Range'>Date Range</button>
-  </div>
+  
 
 {/* gonna get it up on the site and working, than i'll filter properly */}
-  <ScrollableList id = 'NEOclose'>
-    {Countdowns.map((countdown) => (
-      <>{countdown.cd}</>
+  <ScrollableList id = 'messageList'>
+      <label>
+    {messages.map((messenger) => (
+      <>{messenger.title}</>
     ))}
+    </label>
+    <body>
+    {messages.map((messenger) => (
+      <>{messenger.body}</>
+    ))}
+    </body>
+    <label>
+    {messages.map((messenger) => (
+      <>{messenger.date}</>
+    ))}
+    </label>
   </ScrollableList>
     </>
   );
 };
 
-export default Countdown;
+export default messenger;
