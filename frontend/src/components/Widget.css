@@ -1,11 +1,15 @@
 .widget {
   border: 1px solid black;
-  border-radius: 5px;
+  border-radius: 15px;
+  border-color: #f8f3df;
+  border-width: 2px;
   padding: 10px;
   overflow: hidden;
 }
 
 .title {
+  text-align: center;
   font-weight: 800;
   font-size: 2rem;
+  font-family: 'Audiowide';
 }
