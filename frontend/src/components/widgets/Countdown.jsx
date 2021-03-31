@@ -41,7 +41,7 @@ const Countdown = () => {
   return (
     <>
   <label for = 'NEOclose'>NEO(Near Earth Objects</label>
-  <button id = 'NEOclose' onclick = 'openFilter()'></button>
+  <button id = 'NEOfilter' onclick = 'openFilter()'></button>
   {/* i know a div here is bad form,. what else shoudl i use */}
   <div id = 'NEOBox' style = "visibility: hidden;">
   <form>
@@ -64,7 +64,7 @@ const Countdown = () => {
   <button id = 'Add2' onclick = "setFilter('')" >Add</button><br></br>
   </div>
 
-  <ScrollableList id = 'NEOclose'>
+  <ScrollableList id = 'NEOclosest'>
     {Countdowns.map((countdown) => (
       <div key={countdown.cd} >{countdown.cd}</div>
     ))}
