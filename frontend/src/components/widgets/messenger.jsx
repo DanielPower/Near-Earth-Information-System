@@ -5,11 +5,12 @@ import ScrollableList from '../ScrollableList/ScrollableList';
 
 
 //Today date function from https://stackoverflow.com/questions/1531093/how-do-i-get-the-current-date-in-javascript
-var todayDate = new Date();
-var d = String(todayDate.getDate()).padStart(2,'0');
-var m = String(todayDate.getMonth() + 1).padStart(2, '0');
-var y = todayDate.getFullYear();
+let todayDate = new Date();
+const d = String(todayDate.getDate()).padStart(2, '0');
+const m = String(todayDate.getMonth() + 1).padStart(2, '0');
+const y = todayDate.getFullYear();
 todayDate = y + '/' + m + '/' + d;
+
 
 //useful for timestamping
 
@@ -17,7 +18,7 @@ todayDate = y + '/' + m + '/' + d;
 //date-min=1900-01-01&date-max=2100-01-01
 const messenger = () => {
   const [{ data, loading, error }] = useAxios(
-    ('http://localhost:3000/messages'),
+    ('http://localhost:8080/messages'),
   );
   
   if (loading) return 'loading';
@@ -33,9 +34,13 @@ const messenger = () => {
 
   return (
     <>
-  <label for ='messageList'></label>
-  
-  
+
+    <label for = 'msgTitle'>Title</label>
+    <input id = 'msgTitle'></input>
+    <label for = 'msgBody'>Body</label>
+    <input id = 'msgBody'></input>
+
+    <label for = 'messageList'></label>
 
 {/* gonna get it up on the site and working, than i'll filter properly */}
   <ScrollableList id = 'messageList'>
