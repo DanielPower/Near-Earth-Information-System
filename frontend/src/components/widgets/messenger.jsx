@@ -44,21 +44,17 @@ const messenger = () => {
 
 {/* gonna get it up on the site and working, than i'll filter properly */}
   <ScrollableList id = 'messageList'>
+      <div key={messages.messenger.title}>
       <label>
-    {messages.map((messenger) => (
-      <>{messenger.title}</>
-    ))}
+    <>{messages.messenger.title}</>
     </label>
     <body>
-    {messages.map((messenger) => (
-      <>{messenger.body}</>
-    ))}
+    <>{messages.messenger.body}</>
     </body>
     <label>
-    {messages.map((messenger) => (
-      <>{messenger.date}</>
-    ))}
+    <>{messages.messenger.date}</>
     </label>
+    </div>
   </ScrollableList>
     </>
   );

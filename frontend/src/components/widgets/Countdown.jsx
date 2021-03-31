@@ -64,10 +64,9 @@ const Countdown = () => {
   <button id = 'Add2' onclick = "setFilter('')" >Add</button><br></br>
   </div>
 
-{/* gonna get it up on the site and working, than i'll filter properly */}
   <ScrollableList id = 'NEOclose'>
     {Countdowns.map((countdown) => (
-      <>{countdown.cd}</>
+      <div key={countdown.cd} >{countdown.cd}</div>
     ))}
   </ScrollableList>
     </>
