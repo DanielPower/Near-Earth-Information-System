@@ -66,7 +66,7 @@ const Countdown = () => {
 
   <ScrollableList id = 'NEOclosest'>
     {Countdowns.map((countdown) => (
-      <div key={countdown.cd} >{countdown.cd}</div>
+      <div key={countdown.des} >{countdown.des} will close-approach at: {countdown.cd}</div>
     ))}
   </ScrollableList>
     </>
