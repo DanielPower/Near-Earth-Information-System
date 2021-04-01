@@ -2,6 +2,7 @@ import dotenv from "dotenv";
 import express from "express";
 import mongoose from "mongoose";
 import schedule from "node-schedule";
+import cors from "cors";
 import routes from "./src/routes/index.js";
 import scrapeAll from "./src/scripts/scrapeAll.js";
 
@@ -19,5 +20,10 @@ if (process.env.SCRAPE == "true") {
 
 const app = express();
 app.use(express.json());
+app.use(
+  cors({
+    allowedOrigins: ["*"],
+  }),
+);
 app.use("/", routes);
 app.listen(3000);
