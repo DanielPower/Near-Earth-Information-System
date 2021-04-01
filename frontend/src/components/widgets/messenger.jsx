@@ -18,7 +18,7 @@ todayDate = y + '/' + m + '/' + d;
 //date-min=1900-01-01&date-max=2100-01-01
 const messenger = () => {
   const [{ data, loading, error }] = useAxios(
-    ('http://localhost:8080/messages'),
+    ('http://localhost:3000/messages'),
   );
   
   if (loading) return 'loading';
