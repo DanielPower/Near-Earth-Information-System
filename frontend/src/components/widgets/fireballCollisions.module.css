@@ -1,0 +1,27 @@
+.centerContents {
+  justify-content: center;
+  width: 100%;
+}
+.userInput {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.latitude,
+.longitude,
+.distance {
+  padding: 20px;
+}
+
+.dataDisplay {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  padding-top: 20px;
+  border: solid 2px white;
+  height: 100px;
+}
+
+.inputField {
+  border-radius: 6px;
+}

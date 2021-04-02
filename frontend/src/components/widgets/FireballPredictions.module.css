@@ -1,0 +1,49 @@
+.centerContents {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.years,
+.ip {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  flex-wrap: wrap;
+  margin: 10px;
+}
+.yearMaxInput,
+.yearMinInput {
+  border-radius: 7px;
+  text-align: center;
+  width: 25%;
+  margin: 10px;
+}
+
+.ipMaxInput,
+.ipMinInput {
+  border-radius: 7px;
+  text-align: center;
+  width: 25%;
+  margin: 10px;
+}
+
+.buttonContainer {
+  display: flex;
+  width: 100%;
+  padding-bottom: 10px;
+}
+
+.searchButton {
+  display: flex;
+  border-radius: 7px;
+  align-content: center;
+  margin: auto;
+}
+
+.listContainer {
+  display: flex;
+  border: solid white 2px;
+  width: 100%;
+  height: 100px;
+}
