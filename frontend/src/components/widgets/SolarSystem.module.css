@@ -1,0 +1,75 @@
+.planets {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin: 10px;
+}
+
+.planetText {
+  text-align: center;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.inputBox {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.inputField {
+  width: 50%;
+  border-radius: 7px;
+  font-size: 10px;
+  padding: 5px;
+}
+
+.smallPlanet {
+  width: 50px;
+  height: 50px;
+  transition: transform 1s ease;
+}
+
+.smallPlanet:hover {
+  transform: scale(1.2);
+}
+
+.smallPlanet:hover:before {
+  content: 'Mercury';
+}
+.mediumPlanet {
+  width: 75px;
+  height: 75px;
+  transition: transform 1s ease;
+}
+
+.mediumPlanet:hover {
+  transform: scale(1.2);
+}
+
+.largePlanet {
+  width: 100px;
+  height: 100px;
+  margin: 0px;
+  transition: transform 1s ease;
+}
+
+.largePlanet:hover {
+  transform: scale(1.2);
+}
+
+.listContainer {
+  display: flex;
+  border: solid 3px white;
+  height: 100px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.displayData {
+  display: flex;
+  border: solid 3px white;
+  width: 100%;
+  height: 100px;
+}
