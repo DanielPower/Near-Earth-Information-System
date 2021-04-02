@@ -1,6 +1,7 @@
 .scrollableList {
   overflow-y: auto;
   max-height: 300px;
+  width: 100%;
 }
 
 .listItem:hover {
