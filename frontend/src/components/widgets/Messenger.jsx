@@ -6,8 +6,16 @@ const Messenger = () => {
   const [titleValue, setTitleValue] = useState('');
   const [messageValue, setMessageValue] = useState('');
 
-  const [{ data: messages, loading, error }] = useAxios(
+  const [{ data: messages, loading, error }, reloadMessages] = useAxios(
     'http://localhost:3000/messages',
+  );
+
+  const [_, postMessage] = useAxios(
+    {
+      url: 'http://localhost:3000/messages',
+      method: 'POST',
+    },
+    { manual: true },
   );
 
   if (loading) return 'loading';
@@ -36,6 +44,21 @@ const Messenger = () => {
           onChange={(event) => setMessageValue(event.target.value)}
         />
       </div>
+      <button
+        type="button"
+        onClick={() => {
+          postMessage({
+            data: {
+              title: titleValue,
+              body: messageValue,
+            },
+          }).then(() => {
+            reloadMessages();
+          });
+        }}
+      >
+        Submit
+      </button>
     </>
   );
 };
