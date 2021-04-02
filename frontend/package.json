@@ -9,6 +9,7 @@
     "dotenv": "^8.2.0",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
+    "react-twitter-embed": "^3.0.3",
     "twitter": "^1.7.1"
   },
   "devDependencies": {
