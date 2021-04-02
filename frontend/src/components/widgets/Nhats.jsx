@@ -10,8 +10,8 @@ const Nhats = () => {
   const [
     {
       data: selectedNhatsData,
-      loading: selectedNhatsLoading,
-      error: selectedNhatsError,
+      // loading: selectedNhatsLoading,
+      // error: selectedNhatsError,
     },
   ] = useAxios(null);
 
@@ -30,16 +30,13 @@ const Nhats = () => {
           <div>{selectedNhatsDes}</div>
         </>
       ) : (
-        <ScrollableList
-          items={nhatss.map(({ des }) => ({
-            key: des,
-            component: (
-              <div key={des} onClick={() => setSelectedNhatsDes(des)}>
-                {des}
-              </div>
-            ),
-          }))}
-        />
+        <ScrollableList>
+          {nhatss.map((nhats, index) => (
+            <div key={index} onClick={() => setSelectedNhatsDes(nhats.des)}>
+              {nhats.des}
+            </div>
+          ))}
+        </ScrollableList>
       )}
     </>
   );

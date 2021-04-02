@@ -69,27 +69,28 @@ const Countdown = () => {
         <br />
       </div>
 
-      <ScrollableList
-        items={Countdowns.map(
-          ([
-            des,
-            _orbitId,
-            _jd,
-            cd,
-            _dist,
-            _distMin,
-            _distMax,
-            _vRel,
-            _vInf,
-            _tSigmaF,
-            _h,
-          ]) => (
-            <div key={des}>
-              {des} will close-approach at: {cd}
-            </div>
+      <ScrollableList>
+        {Countdowns.map(
+          (
+            [
+              des,
+              _orbitId,
+              _jd,
+              cd,
+              _dist,
+              _distMin,
+              _distMax,
+              _vRel,
+              _vInf,
+              _tSigmaF,
+              _h,
+            ],
+            index,
+          ) => (
+            <div key={index}>{`${des} will close-approach at: ${cd}`}</div>
           ),
         )}
-      />
+      </ScrollableList>
     </>
   );
 };
