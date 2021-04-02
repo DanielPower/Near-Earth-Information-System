@@ -8,7 +8,6 @@ const Countdown = () => {
   const [maxDate, setMaxDate] = useState(
     dayjs().add(100, 'year').format('YYYY-MM-DD'),
   );
-  console.log(minDate, maxDate);
   const [{ data, loading, error }] = useAxios({
     url: 'https://ssd-api.jpl.nasa.gov/cad.api',
     params: {

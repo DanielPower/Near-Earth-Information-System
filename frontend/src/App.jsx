@@ -6,6 +6,7 @@ import FireballCollision from './components/widgets/FireballCollisions';
 import FireballPrediction from './components/widgets/FireballPredictions';
 import NearEarthObjects from './components/widgets/Countdown';
 import Messenger from './components/widgets/Messenger';
+import Twitter from './components/widgets/Twitter';
 import styles from './App.module.css';
 
 const App = () => {
@@ -27,12 +28,16 @@ const App = () => {
     title: 'Future Impact Predictions',
     Component: FireballPrediction,
   };
+  const twitter = {
+    title: 'NASA Twitter',
+    Component: Twitter,
+  };
 
   const rows = [
     [solarSystem, nhats],
-    [fireballCollision],
-    [fireballPrediction],
-    [nearEarthObjects, messenger],
+    [fireballCollision, fireballPrediction],
+    [nearEarthObjects],
+    [twitter, messenger],
   ];
 
   return (
