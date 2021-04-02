@@ -1,19 +1,18 @@
-import { TwitterTimelineEmbed} from 'react-twitter-embed';
+import { Timeline } from 'react-twitter-widgets';
 import React from 'react';
 
-
-
-const Twitter = () => { 
-    return (
+const Twitter = () => {
+  return (
     <>
-        <TwitterTimelineEmbed
-            sourceType="profile"
-            screenName="NASA"
-            options={{height: 400}}
-        />
-
+      <Timeline
+        dataSource={{
+          sourceType: 'profile',
+          screenName: 'NASA',
+        }}
+        options={{ height: 400 }}
+      />
     </>
-    );
+  );
 };
 
 export default Twitter;
