@@ -1,10 +1,12 @@
 import React from 'react';
 import styles from './ScrollableList.module.css';
 
-const ScrollableList = ({ items }) => (
+const ScrollableList = ({ children }) => (
   <div className={styles.scrollableList}>
-    {items.map((item) => (
-      <div key={item.key} className={styles.listItem}>{item.component}</div>
+    {React.Children.map(children, (child) => (
+      <div key={child.props} className={styles.listItem}>
+        <child.type {...child.props} />
+      </div>
     ))}
   </div>
 );
