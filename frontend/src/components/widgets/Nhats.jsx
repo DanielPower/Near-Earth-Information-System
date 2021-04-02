@@ -4,10 +4,16 @@ import ScrollableList from '../ScrollableList/ScrollableList';
 
 const Nhats = () => {
   const [selectedNhatsDes, setSelectedNhatsDes] = useState(null);
-  const [{ data: nhatsData, loading: nhatsLoading, error: nhatsError }] = useAxios(
-    'https://ssd-api.jpl.nasa.gov/nhats.api',
-  );
-  const [{ data: selectedNhatsData, loading: selectedNhatsLoading, error: selectedNhatsError }] = useAxios(null);
+  const [
+    { data: nhatsData, loading: nhatsLoading, error: nhatsError },
+  ] = useAxios('https://ssd-api.jpl.nasa.gov/nhats.api');
+  const [
+    {
+      data: selectedNhatsData,
+      loading: selectedNhatsLoading,
+      error: selectedNhatsError,
+    },
+  ] = useAxios(null);
 
   if (nhatsLoading) return 'loading';
   if (nhatsError) return 'error';
@@ -24,11 +30,16 @@ const Nhats = () => {
           <div>{selectedNhatsDes}</div>
         </>
       ) : (
-        <ScrollableList>
-          {nhatss.map(({ des }) => (
-            <div key={des} onClick={() => setSelectedNhatsDes(des)}>{des}</div>
-          ))}
-        </ScrollableList>
+        <ScrollableList
+          items={nhatss.map(({ des }) => ({
+            key: des,
+            component: (
+              <div key={des} onClick={() => setSelectedNhatsDes(des)}>
+                {des}
+              </div>
+            ),
+          }))}
+        />
       )}
     </>
   );

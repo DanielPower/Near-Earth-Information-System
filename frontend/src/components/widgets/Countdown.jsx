@@ -69,8 +69,8 @@ const Countdown = () => {
         <br />
       </div>
 
-      <ScrollableList id="NEOclosest">
-        {Countdowns.map(
+      <ScrollableList
+        items={Countdowns.map(
           ([
             des,
             _orbitId,
@@ -89,7 +89,7 @@ const Countdown = () => {
             </div>
           ),
         )}
-      </ScrollableList>
+      />
     </>
   );
 };

@@ -6,15 +6,15 @@ import Messenger from './components/widgets/Messenger';
 
 const App = () => {
   const widgets = [
-    { title: 'NHATS', key: 'nhats', component: Nhats },
-    { title: 'COUNTDOWN', key: 'countdown', component: Countdown },
-    { title: 'MESSENGER', key: 'messenger', component: Messenger },
+    { title: 'NHATS', component: Nhats },
+    { title: 'COUNTDOWN', component: Countdown },
+    { title: 'MESSENGER', component: Messenger },
   ];
   return (
     <>
       {widgets.map((widget) => (
-        <Widget title={widget.title}>
-          <widget.component key={widget.key} />
+        <Widget key={widget.title} title={widget.title}>
+          <widget.component />
         </Widget>
       ))}
     </>
