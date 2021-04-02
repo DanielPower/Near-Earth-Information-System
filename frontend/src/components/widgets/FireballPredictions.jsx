@@ -56,7 +56,7 @@ const FireballPrediction = () => {
             Search
           </button>
         </div>
-        <div className={styles.listContainer}></div>
+        //<div className={styles.listContainer}></div>
       </div>
     </>
   );
