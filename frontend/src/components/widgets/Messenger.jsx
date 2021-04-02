@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useAxios from 'axios-hooks';
 import ScrollableList from '../ScrollableList/ScrollableList';
 
 const Messenger = () => {
+  const [titleValue, setTitleValue] = useState('');
+  const [messageValue, setMessageValue] = useState('');
+
   const [{ data: messages, loading, error }] = useAxios(
     'http://localhost:3000/messages',
   );
@@ -12,10 +15,6 @@ const Messenger = () => {
 
   return (
     <>
-      <input id="msgTitle" />
-      <input id="msgBody" />
-
-      {/* gonna get it up on the site and working, than i'll filter properly */}
       <ScrollableList>
         {messages.map((message) => (
           <div key={message._id}>
@@ -25,6 +24,18 @@ const Messenger = () => {
           </div>
         ))}
       </ScrollableList>
+      <div>
+        <input
+          placeholder="Title"
+          onChange={(event) => setTitleValue(event.target.value)}
+        />
+      </div>
+      <div>
+        <input
+          placeholder="Message"
+          onChange={(event) => setMessageValue(event.target.value)}
+        />
+      </div>
     </>
   );
 };
