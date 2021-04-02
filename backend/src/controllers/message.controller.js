@@ -1,12 +1,12 @@
 import Message from "../models/message.model.js";
 
 export const postMessage = async (req, res) => {
-  const { title, body, date } = req.body;
+  const { title, body } = req.body;
 
   const message = Message.create({
     title,
     body,
-    date: new Date(date),
+    date: new Date(),
   });
 
   res.status(201).send(message);

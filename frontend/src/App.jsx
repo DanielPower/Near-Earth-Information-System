@@ -5,31 +5,32 @@ import SolarSystem from './components/widgets/SolarSystem';
 import FireballCollision from './components/widgets/FireballCollisions';
 import styles from './App.module.css';
 import FireballPrediction from './components/widgets/FireballPredictions';
+import Countdown from './components/widgets/Countdown';
+import Messenger from './components/widgets/Messenger';
 
 const App = () => {
   const widgets = [
-    { title: 'NHATS', key: 'nhats', component: Nhats },
+    { title: 'NHATS', component: Nhats },
+    { title: 'COUNTDOWN', component: Countdown },
+    { title: 'MESSENGER', component: Messenger },
     {
       title: 'Solar System Bodies',
-      key: 'SolarSystem',
       component: SolarSystem,
     },
     {
       title: 'Past FireBall Collisions',
-      key: 'collision',
       component: FireballCollision,
     },
     {
       title: 'Future Impact Predictions',
-      key: 'probabilities',
       component: FireballPrediction,
     },
   ];
   return (
     <div className={styles.row}>
       {widgets.map((widget) => (
-        <Widget title={widget.title}>
-          <widget.component key={widget.key} />
+        <Widget key={widget.title} title={widget.title}>
+          <widget.component />
         </Widget>
       ))}
     </div>
