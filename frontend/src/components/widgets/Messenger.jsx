@@ -15,7 +15,7 @@ const Messenger = () => {
     <>
       <input id="msgTitle" className={styles.textboxes}/>
       <input id="msgBody" className={styles.textboxes}/>
-      <button type="button" id="messenger_input" className={styles.textboxes}/>
+      <button type="button" id="messenger_input" className={styles.textboxes}>Add</button>
 
       {/* gonna get it up on the site and working, than i'll filter properly */}
       <ScrollableList>
