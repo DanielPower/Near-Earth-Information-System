@@ -1,23 +1,55 @@
 import React from 'react';
 import Widget from './components/Widget';
 import Nhats from './components/widgets/Nhats';
-import Countdown from './components/widgets/Countdown';
+import SolarSystem from './components/widgets/SolarSystem';
+import FireballCollision from './components/widgets/FireballCollisions';
+import FireballPrediction from './components/widgets/FireballPredictions';
+import NearEarthObjects from './components/widgets/Countdown';
 import Messenger from './components/widgets/Messenger';
 import Twitter from './components/widgets/Twitter';
+import styles from './App.module.css';
 
 const App = () => {
-  const widgets = [
-    { title: 'NHATS', component: Nhats },
-    { title: 'COUNTDOWN', component: Countdown },
-    { title: 'MESSENGER', component: Messenger },
-    { title: 'TWITTER', component: Twitter },
+  const nhats = { title: 'NHATS', Component: Nhats };
+  const nearEarthObjects = {
+    title: 'Near Earth Objects',
+    Component: NearEarthObjects,
+  };
+  const messenger = { title: 'Messenger', Component: Messenger };
+  const solarSystem = {
+    title: 'Solar System Bodies',
+    Component: SolarSystem,
+  };
+  const fireballCollision = {
+    title: 'Past FireBall Collisions',
+    Component: FireballCollision,
+  };
+  const fireballPrediction = {
+    title: 'Future Impact Predictions',
+    Component: FireballPrediction,
+  };
+  const twitter = {
+    title: 'NASA Twitter',
+    Component: Twitter,
+  };
+
+  const rows = [
+    [solarSystem, nhats],
+    [fireballCollision, fireballPrediction],
+    [nearEarthObjects],
+    [twitter, messenger],
   ];
+
   return (
     <>
-      {widgets.map((widget) => (
-        <Widget key={widget.title} title={widget.title}>
-          <widget.component />
-        </Widget>
+      {rows.map((widgets) => (
+        <div className={styles.row}>
+          {widgets.map(({ title, Component }) => (
+            <Widget key={title} title={title}>
+              <Component />
+            </Widget>
+          ))}
+        </div>
       ))}
     </>
   );
