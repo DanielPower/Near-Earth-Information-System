@@ -1,6 +1,7 @@
 import React from 'react';
 import useAxios from 'axios-hooks';
 import ScrollableList from '../ScrollableList/ScrollableList';
+import styles from '../Countdown.module.css';
 
 const Messenger = () => {
   const [{ data: messages, loading, error }] = useAxios(
@@ -12,8 +13,9 @@ const Messenger = () => {
 
   return (
     <>
-      <input id="msgTitle" />
-      <input id="msgBody" />
+      <input id="msgTitle" className={styles.textboxes}/>
+      <input id="msgBody" className={styles.textboxes}/>
+      <button type="button" id="messenger_input" className={styles.textboxes}/>
 
       {/* gonna get it up on the site and working, than i'll filter properly */}
       <ScrollableList>

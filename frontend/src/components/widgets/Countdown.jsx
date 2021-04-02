@@ -1,6 +1,7 @@
 import React from 'react';
 import useAxios from 'axios-hooks';
 import ScrollableList from '../ScrollableList/ScrollableList';
+import styles from '../Countdown.module.css';
 
 // Today date function from https://stackoverflow.com/questions/1531093/how-do-i-get-the-current-date-in-javascript
 let todayDate = new Date();
@@ -40,30 +41,30 @@ const Countdown = () => {
 
   return (
     <>
-      <label>NEO(Near Earth Objects</label>
+      <label>Near Earth Objects</label>
       <button type="button" id="NEOfilter" />
       <div id="NEOBox">
         <label>Object:</label>
-        <select name="object" id="object">
+        <select name="object" id="object" className={styles.textboxes}>
           <option id="NHAs">NHAs</option>
           <option id="NEAs">NEAs</option>
           <option id="Comets">Comets</option>
         </select>
-        <button type="button" id="Add">
+        <button type="button" id="Add" className={styles.textboxes}>
           Add
         </button>
         <br />
         <label>Distance:</label>
-        <input id="Distance" />
-        <button type="button" id="Add2" onClick={null}>
+        <input id="Distance" className={styles.textboxes} />
+        <button type="button" id="Add2" onClick={null} className={styles.textboxes}>
           Add
         </button>
         <br />
         <label>Date Range:</label>
         <br />
-        <input type="date" id="DateStart" name="date-start" value={todayDate} />
-        <input type="date" id="DateEnd" name="date-end" value={todayDate} />
-        <button type="button" id="Add2">
+        <input type="date" id="DateStart" name="date-start" value={todayDate} className={styles.textboxes} />
+        <input type="date" id="DateEnd" name="date-end" value={todayDate} className={styles.textboxes} />
+        <button type="button" id="Add2" className={styles.textboxes}>
           Add
         </button>
         <br />
