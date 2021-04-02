@@ -31,6 +31,7 @@ const App = () => {
   const rows = [
     [solarSystem, nhats],
     [fireballCollision],
+    [fireballPrediction],
     [nearEarthObjects, messenger],
   ];
 
