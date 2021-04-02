@@ -9,7 +9,7 @@ const Twitter = () => {
           sourceType: 'profile',
           screenName: 'NASA',
         }}
-        options={{ height: 400 }}
+        options={{ theme: 'dark', height: 400 }}
       />
     </>
   );
