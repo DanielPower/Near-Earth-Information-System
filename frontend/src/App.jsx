@@ -2,17 +2,19 @@ import React from 'react';
 import Widget from './components/Widget';
 import Nhats from './components/widgets/Nhats';
 import Countdown from './components/widgets/Countdown';
-import Messenger from './components/widgets/messenger';
+import Messenger from './components/widgets/Messenger';
 
 const App = () => {
-  const widgets = [{ title: 'NHATS', key: 'nhats', component: Nhats },
-    { title: 'COUNTDOWN', key: 'countdown', component: Countdown },
-    { title: 'MESSENGER', key: 'messenger', component: Messenger }];
+  const widgets = [
+    { title: 'NHATS', component: Nhats },
+    { title: 'COUNTDOWN', component: Countdown },
+    { title: 'MESSENGER', component: Messenger },
+  ];
   return (
     <>
       {widgets.map((widget) => (
-        <Widget title={widget.title}>
-          <widget.component key={widget.key} />
+        <Widget key={widget.title} title={widget.title}>
+          <widget.component />
         </Widget>
       ))}
     </>
