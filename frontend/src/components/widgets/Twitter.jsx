@@ -1,13 +1,19 @@
-import { TwitterTimelineEmbed, TwitterShareButton, TwitterFollowButton, TwitterHashtagButton, TwitterMentionButton, TwitterTweetEmbed, TwitterMomentShare, TwitterDMButton, TwitterVideoEmbed, TwitterOnAirButton } from 'react-twitter-embed';
+import { TwitterTimelineEmbed} from 'react-twitter-embed';
 import React from 'react';
-import useAxios from 'axios-hooks';
-import ScrollableList from '../ScrollableList/ScrollableList';
-import styles from '../Countdown.module.css';
 
 
 
+const Twitter = () => { 
+    return (
+    <>
+        <TwitterTimelineEmbed
+            sourceType="profile"
+            screenName="NASA"
+            options={{height: 400}}
+        />
 
+    </>
+    );
+};
 
-
-//export default Twitter;
-  
+export default Twitter;
