@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import useAxios from 'axios-hooks';
 import ScrollableList from '../ScrollableList/ScrollableList';
-import styles from '../Countdown.module.css';
-// import {useState} from 'react';
 
 const Messenger = () => {
   const [titleValue, setTitleValue] = useState('');

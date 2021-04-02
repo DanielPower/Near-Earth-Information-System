@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import dayjs from 'dayjs';
 import useAxios from 'axios-hooks';
 import ScrollableList from '../ScrollableList/ScrollableList';
-import styles from '../Countdown.module.css';
 
 const Countdown = () => {
   const [minDate, setMinDate] = useState(dayjs().format('YYYY-MM-DD'));
