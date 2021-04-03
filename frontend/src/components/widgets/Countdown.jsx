@@ -33,81 +33,82 @@ const Countdown = () => {
 
   return (
     <>
-      <label>NEO(Near Earth Objects)</label>
       <div>
-        <label>Object:</label>
-        <select
-          name="object"
-          value={filter}
-          onChange={(event) => setFilter(event.target.value)}
-          className={styles.textboxes}
-        >
-          <option>pha</option>
-          <option>nea</option>
-          <option>comet</option>
-        </select>
-
-        <br />
-        <label>Maximum distance(au):</label>
-        <input
-          value={tempDistance}
-          onChange={(event) => setTempDistance(event.target.value)}
-          className={styles.textboxes}
-        />
-        <button
-          type="button"
-          value={distance}
-          onClick={() => setDistance(tempDistance)}
-          className={styles.textboxes}
-        >
-          Add
-        </button>
-        <br />
-        <label>Date Range:</label>
-        <br />
-        <input
-          type="date"
-          value={minDate}
-          onChange={(event) => setMinDate(event.target.value)}
-          className={styles.textboxes}
-        />
-        <input
-          type="date"
-          value={maxDate}
-          onChange={(event) => setMaxDate(event.target.value)}
-          className={styles.textboxes}
-        />
-        <button type="button" className={styles.textboxes}>
-          Add
-        </button>
-        <br />
+        <div className={styles.object}>
+          <label>Object:</label>
+          <select
+            name="object"
+            value={filter}
+            onChange={(event) => setFilter(event.target.value)}
+            className={styles.textboxes}
+          >
+            <option>pha</option>
+            <option>nea</option>
+            <option>comet</option>
+          </select>
+        </div>
+        <div className={styles.object}>
+          <label>Maximum distance(au):</label>
+          <input
+            value={tempDistance}
+            onChange={(event) => setTempDistance(event.target.value)}
+            className={styles.textboxes}
+          />
+          <button
+            type="button"
+            value={distance}
+            onClick={() => setDistance(tempDistance)}
+            className={styles.textboxes}
+          >
+            Add
+          </button>
+        </div>
+        <div className={styles.object}>
+          <label>Date Range:</label>
+          <input
+            type="date"
+            value={minDate}
+            onChange={(event) => setMinDate(event.target.value)}
+            className={styles.textboxes}
+          />
+          <input
+            type="date"
+            value={maxDate}
+            onChange={(event) => setMaxDate(event.target.value)}
+            className={styles.textboxes}
+          />
+          <button type="button" className={styles.textboxes}>
+            Add
+          </button>
+        </div>
       </div>
-
-      <ScrollableList>
-        {Countdowns.map(
-          (
-            [
-              des,
-              _orbitId,
-              _jd,
-              cd,
-              dist,
-              _distMin,
-              _distMax,
-              _vRel,
-              _vInf,
-              _tSigmaF,
-              _body,
-              _h,
-            ],
-            index,
-          ) => (
-            <div key={index}>
-              {`${des} will close-approach Earth at: ${cd} at a distance of ${dist} AU`}
-            </div>
-          ),
-        )}
-      </ScrollableList>
+      <div className={styles.listContainer}>
+        <ScrollableList>
+          {Countdowns.map(
+            (
+              [
+                des,
+                _orbitId,
+                _jd,
+                cd,
+                dist,
+                _distMin,
+                _distMax,
+                _vRel,
+                _vInf,
+                _tSigmaF,
+                _body,
+                _h,
+              ],
+              index,
+            ) => (
+              <div key={index} className={styles.dataInput}>
+                {`${des} will close-approach Earth at: ${cd} at a distance of ${dist} AU`}
+              </div>
+            ),
+          )}
+        </ScrollableList>
+      </div>
     </>
   );
 };
