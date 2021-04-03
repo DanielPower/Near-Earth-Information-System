@@ -1,13 +1,22 @@
 import React, { useState } from 'react';
 import useAxios from 'axios-hooks';
+import dayjs from 'dayjs';
 import ScrollableList from '../ScrollableList/ScrollableList';
 import styles from './Nhats.module.css';
 
 const Nhats = () => {
   const [selectedNhats, setSelectedNhats] = useState(null);
-  const [{ data: nhatss, loading, error }] = useAxios(
-    'http://localhost:3000/nhats',
+  const [minDate, setMinDate] = useState(dayjs().format('YYYY-MM-DD'));
+  const [maxDate, setMaxDate] = useState(
+    dayjs().add(50, 'year').format('YYYY-MM-DD'),
   );
+  const [{ data: nhatss, loading, error }] = useAxios({
+    url: 'http://localhost:3000/nhats',
+    params: {
+      minDate,
+      maxDate,
+    },
+  });
 
   if (loading) {
     return 'loading';
@@ -41,13 +50,33 @@ const Nhats = () => {
           ))}
         </>
       ) : (
-        <ScrollableList>
-          {nhatss.map((nhats, index) => (
-            <div key={index} onClick={() => setSelectedNhats(index)}>
-              {nhats.des}
-            </div>
-          ))}
-        </ScrollableList>
+        <>
+          <div>
+            {'Minimum date: '}
+            <input
+              value={minDate}
+              onChange={(event) => setMinDate(event.target.value)}
+              type="date"
+            />
+          </div>
+          <div>
+            {'Maximum date: '}
+            <input
+              value={maxDate}
+              onChange={(event) => setMaxDate(event.target.value)}
+              type="date"
+            />
+          </div>
+          <div className={styles.table}>
+            <ScrollableList>
+              {nhatss.map((nhats, index) => (
+                <div key={index} onClick={() => setSelectedNhats(index)}>
+                  {nhats.des}
+                </div>
+              ))}
+            </ScrollableList>
+          </div>
+        </>
       )}
     </>
   );
