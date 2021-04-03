@@ -10,8 +10,8 @@ const Countdown = () => {
     dayjs().add(50, 'year').format('YYYY-MM-DD'),
   );
   const [filter, setFilter] = useState('pha');
-  const [distance, setDistance] = useState(0.5);
-  const [tempDistance, setTempDistance] = useState(0.5);
+  const [distance, setDistance] = useState(0.3);
+  const [tempDistance, setTempDistance] = useState(0.3);
 
   const [{ data, loading, error }] = useAxios({
     url: 'https://ssd-api.jpl.nasa.gov/cad.api',
@@ -22,6 +22,7 @@ const Countdown = () => {
       nea: filter === 'nea',
       comet: filter === 'comet',
       'dist-max': distance,
+      body: 'Earth',
     },
   });
 
@@ -32,7 +33,7 @@ const Countdown = () => {
 
   return (
     <>
-      <label>NEO(Near Earth Objects</label>
+      <label>NEO(Near Earth Objects)</label>
       <div>
         <label>Object:</label>
         <select
@@ -47,7 +48,7 @@ const Countdown = () => {
         </select>
 
         <br />
-        <label>Maximum distance:</label>
+        <label>Maximum distance(au):</label>
         <input
           value={tempDistance}
           onChange={(event) => setTempDistance(event.target.value)}
@@ -96,13 +97,13 @@ const Countdown = () => {
               _vRel,
               _vInf,
               _tSigmaF,
-              body,
+              _body,
               _h,
             ],
             index,
           ) => (
             <div key={index}>
-              {`${des} will close-approach ${body} at: ${cd} at a distance of ${dist} AU`}
+              {`${des} will close-approach Earth at: ${cd} at a distance of ${dist} AU`}
             </div>
           ),
         )}

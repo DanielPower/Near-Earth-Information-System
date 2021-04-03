@@ -21,20 +21,11 @@ const Messenger = () => {
 
   if (loading) return 'loading';
   if (error) return 'error';
-
+  let tempMessage = Array.from(messages);
+  
   return (
     <>
-      <div className={styles.board}>
-        <ScrollableList>
-          {messages.map((message) => (
-            <div key={message._id}>
-              {message.title}
-              {message.body}
-              {message.date}
-            </div>
-          ))}
-        </ScrollableList>
-      </div>
+      
       <div>
         <input
           placeholder="Title"
@@ -65,6 +56,18 @@ const Messenger = () => {
       >
         Submit
       </button>
+      <div className={styles.board}>
+        <ScrollableList>
+          {tempMessage.reverse().map((message) => (
+            <div key={message._id}>
+              {message.title}<br/>
+              {message.body}<br/>
+              {message.date}<br/>
+              <br/>
+            </div>
+          ))}
+        </ScrollableList>
+      </div>
     </>
   );
 };
