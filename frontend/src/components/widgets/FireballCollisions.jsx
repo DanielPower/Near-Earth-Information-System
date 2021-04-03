@@ -20,7 +20,6 @@ const FireballCollision = () => {
     { manual: true },
   );
   if (error) return 'error';
-
   return (
     <>
       <div className={styles.centerContents}>
@@ -84,11 +83,11 @@ const FireballCollision = () => {
                 {collisions.map(
                   ({ date, impactEnergy, lat, lon, dist }, index) => (
                     <div key={index} className={styles.itemContainer}>
-                      <div className={styles.listItems}>{date}</div>
-                      <div className={styles.listItems}>{impactEnergy}</div>
-                      <div className={styles.listItems}>{lat}</div>
-                      <div className={styles.listItems}>{lon}</div>
-                      <div className={styles.listItems}>{dist.toFixed(3)}</div>
+                      <div>{date}</div>
+                      <div>{impactEnergy}</div>
+                      <div>{lat}</div>
+                      <div>{lon}</div>
+                      <div>{dist.toFixed(3)}</div>
                     </div>
                   ),
                 )}
