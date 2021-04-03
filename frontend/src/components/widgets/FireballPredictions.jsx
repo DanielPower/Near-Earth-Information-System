@@ -77,9 +77,9 @@ const FireballPrediction = () => {
         <div className={styles.listContainer}>
           <ScrollableList>
             {predictions.map(([des, energy, ip, date, year, dist], index) => (
-              <div
-                key={index}
-              >{`${des} ${energy} ${ip} ${date} ${year} ${dist}`}</div>
+              <div key={index}>
+                {`${des} ${energy} ${ip} ${date} ${year} ${dist}`}
+              </div>
             ))}
           </ScrollableList>
         </div>

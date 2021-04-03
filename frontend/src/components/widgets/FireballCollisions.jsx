@@ -75,10 +75,10 @@ const FireballCollision = () => {
           ? 'loading'
           : collisions && (
               <ScrollableList>
-                {collisions.map(([date, impactEnergy, lat, lon], index) => (
-                  <div
-                    key={index}
-                  >{`${date} ${impactEnergy} ${lat} ${lon}`}</div>
+                {collisions.map(({ date, impactEnergy, lat, lon }, index) => (
+                  <div key={index}>
+                    {`${date} ${impactEnergy} ${lat} ${lon}`}
+                  </div>
                 ))}
               </ScrollableList>
             )}
