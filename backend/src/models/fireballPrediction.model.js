@@ -5,7 +5,7 @@ const { Schema, model } = mongoose;
 const fireballPredictionSchema = new Schema({
   des: { type: String, required: true },
   energy: { type: String, required: true },
-  ip: { type: String, required: true },
+  ip: { type: Number, required: true },
   date: { type: Date, required: true },
   year: { type: Number, required: true },
   dist: { type: String, required: true },

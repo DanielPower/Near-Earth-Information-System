@@ -7,6 +7,8 @@ export const findByFilter = async (req, res) => {
   const maxYear = parseInt(req.query.yearMax ?? 9999, 10);
   const minProb = parseInt(req.query.probMin ?? 0.001, 10); //minimum possible value in DB
   const maxProb = parseInt(req.query.probMax ?? 100.0, 10);
+
+  console.log(minProb, maxProb);
   let predictions = await FireballPrediction.findByFilter(
     minYear,
     maxYear,

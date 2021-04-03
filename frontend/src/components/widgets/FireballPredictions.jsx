@@ -13,10 +13,10 @@ const FireballPrediction = () => {
     {
       url: 'http://localhost:3000/predictions',
       params: {
-        yearMin: minYear,
-        yearMax: maxYear,
-        minProb: ipMin,
-        maxProb: ipMax,
+        yearMin: minYear === '' ? 0 : minYear,
+        yearMax: maxYear === '' ? 9999 : maxYear,
+        probMin: ipMin === '' ? 0.001 : ipMin,
+        probMax: ipMax === '' ? 100 : ipMax,
       },
     },
     { manual: true },
@@ -69,6 +69,13 @@ const FireballPrediction = () => {
           >
             Search
           </button>
+          <div className={styles.itemHeaders}>
+            <div>Descriptor</div>
+            <div>Impact Energy</div>
+            <div>Probability</div>
+            <div>Date</div>
+            <div>Distance</div>
+          </div>
         </div>
         <div className={styles.listContainer}>
           {loading
@@ -76,12 +83,13 @@ const FireballPrediction = () => {
             : predictions && (
                 <ScrollableList>
                   {predictions.map(
-                    ([des, energy, ip, date, year, dist], index) => (
-                      <div key={index}>
-                        {`${des} ${energy} ${ip} ${date} ${year} ${parseInt(
-                          dist,
-                          10,
-                        ).toFixed(3)}`}
+                    ({ des, energy, ip, date, year, dist }, index) => (
+                      <div key={index} className={styles.itemContainer}>
+                        <div>{des}</div>
+                        <div>{energy}</div>
+                        <div>{ip}</div>
+                        <div>{date}</div>
+                        <div>{dist}</div>
                       </div>
                     ),
                   )}
