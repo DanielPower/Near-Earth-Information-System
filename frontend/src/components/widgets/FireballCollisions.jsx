@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import useAxios from 'axios-hooks';
 import styles from './fireballCollisions.module.css';
 import ScrollableList from '../ScrollableList/ScrollableList';
@@ -20,7 +20,6 @@ const FireballCollision = () => {
     { manual: true },
   );
   if (error) return 'error';
-  console.log(collisions);
 
   return (
     <>
@@ -67,6 +66,13 @@ const FireballCollision = () => {
             >
               Search
             </button>
+            <div className={styles.itemHeaders}>
+              <div>Date</div>
+              <div>Impact Energy</div>
+              <div>Latitude</div>
+              <div>Longitude</div>
+              <div>Distance</div>
+            </div>
           </div>
         </div>
       </div>
@@ -75,11 +81,17 @@ const FireballCollision = () => {
           ? 'loading'
           : collisions && (
               <ScrollableList>
-                {collisions.map(({ date, impactEnergy, lat, lon }, index) => (
-                  <div key={index}>
-                    {`${date} ${impactEnergy} ${lat} ${lon}`}
-                  </div>
-                ))}
+                {collisions.map(
+                  ({ date, impactEnergy, lat, lon, dist }, index) => (
+                    <div key={index} className={styles.itemContainer}>
+                      <div className={styles.listItems}>{date}</div>
+                      <div className={styles.listItems}>{impactEnergy}</div>
+                      <div className={styles.listItems}>{lat}</div>
+                      <div className={styles.listItems}>{lon}</div>
+                      <div className={styles.listItems}>{dist.toFixed(3)}</div>
+                    </div>
+                  ),
+                )}
               </ScrollableList>
             )}
       </div>

@@ -15,9 +15,7 @@
 
 .dataDisplay {
   display: flex;
-  flex-wrap: wrap;
   width: 100%;
-  padding-top: 20px;
   border: solid 2px white;
   height: 100px;
 }
@@ -26,6 +24,7 @@
   border-radius: 6px;
   width: 250px;
   text-align: center;
+  height: auto;
 }
 
 .buttonContainer {
@@ -36,6 +35,15 @@
 .searchButton {
   display: flex;
   border-radius: 7px;
-  align-content: center;
   margin: auto;
+}
+
+.itemHeaders {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 10px;
+}
+.itemContainer {
+  display: flex;
+  justify-content: space-evenly;
 }

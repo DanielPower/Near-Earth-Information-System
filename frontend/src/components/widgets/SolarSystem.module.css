@@ -66,3 +66,14 @@
   width: 100%;
   margin-top: 10px;
 }
+
+.itemContainer {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.titleContainer {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}

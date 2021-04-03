@@ -9,23 +9,19 @@ const FireballPrediction = () => {
   const [ipMin, setIpMin] = useState(null);
   const [ipMax, setIpMax] = useState(null);
 
-  const [{ data, loading, error }] = useAxios({
-    url: 'http://localhost:3000/predictions',
-    params: {
-      yearMin: minYear,
-      yearMax: maxYear,
-      minProb: ipMin,
-      maxProb: ipMax,
+  const [{ data: predictions, loading, error }, refetchCollisions] = useAxios(
+    {
+      url: 'http://localhost:3000/predictions',
+      params: {
+        yearMin: minYear,
+        yearMax: maxYear,
+        minProb: ipMin,
+        maxProb: ipMax,
+      },
     },
-  });
-
-  if (loading) return 'loading';
+    { manual: true },
+  );
   if (error) return 'error';
-
-  const { data: predictions } = data;
-  if (!predictions) {
-    return 'loading';
-  }
   return (
     <>
       <div className={styles.centerContents}>
@@ -69,19 +65,28 @@ const FireballPrediction = () => {
           <button
             type="button"
             className={styles.searchButton}
-            onClick={(() => setIpMin, setIpMax, setyearMin, setyearMax)}
+            onClick={() => refetchCollisions()}
           >
             Search
           </button>
         </div>
         <div className={styles.listContainer}>
-          <ScrollableList>
-            {predictions.map(([des, energy, ip, date, year, dist], index) => (
-              <div key={index}>
-                {`${des} ${energy} ${ip} ${date} ${year} ${dist}`}
-              </div>
-            ))}
-          </ScrollableList>
+          {loading
+            ? 'loading'
+            : predictions && (
+                <ScrollableList>
+                  {predictions.map(
+                    ([des, energy, ip, date, year, dist], index) => (
+                      <div key={index}>
+                        {`${des} ${energy} ${ip} ${date} ${year} ${parseInt(
+                          dist,
+                          10,
+                        ).toFixed(3)}`}
+                      </div>
+                    ),
+                  )}
+                </ScrollableList>
+              )}
         </div>
       </div>
     </>
