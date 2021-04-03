@@ -24,4 +24,18 @@
 
 .inputField {
   border-radius: 6px;
+  width: 250px;
+  text-align: center;
+}
+
+.buttonContainer {
+  width: 100%;
+  padding-bottom: 20px;
+}
+
+.searchButton {
+  display: flex;
+  border-radius: 7px;
+  align-content: center;
+  margin: auto;
 }

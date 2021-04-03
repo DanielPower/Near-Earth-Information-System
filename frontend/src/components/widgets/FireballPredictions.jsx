@@ -1,19 +1,37 @@
 import React, { useState } from 'react';
 import useAxios from 'axios-hooks';
 import styles from './FireballPredictions.module.css';
+import ScrollableList from '../ScrollableList/ScrollableList';
 
 const FireballPrediction = () => {
-  const [yearMin, setyearMin] = useState(null);
-  const [yearMax, setyearMax] = useState(null);
+  const [minYear, setyearMin] = useState(null);
+  const [maxYear, setyearMax] = useState(null);
   const [ipMin, setIpMin] = useState(null);
   const [ipMax, setIpMax] = useState(null);
 
+  const [{ data, loading, error }] = useAxios({
+    url: 'http://localhost:3000/predictions',
+    params: {
+      yearMin: minYear,
+      yearMax: maxYear,
+      minProb: ipMin,
+      maxProb: ipMax,
+    },
+  });
+
+  if (loading) return 'loading';
+  if (error) return 'error';
+
+  const { data: predictions } = data;
+  if (!predictions) {
+    return 'loading';
+  }
   return (
     <>
       <div className={styles.centerContents}>
         <div className={styles.years}>
           <input
-            value={yearMin}
+            value={minYear}
             className={styles.yearMinInput}
             placeholder="Optional Min Year (0 by default)"
             onChange={(event) => {
@@ -21,7 +39,7 @@ const FireballPrediction = () => {
             }}
           />
           <input
-            value={yearMax}
+            value={maxYear}
             className={styles.yearMaxInput}
             placeholder="Optional Max Year (9999 by default)"
             onChange={(event) => {
@@ -56,7 +74,15 @@ const FireballPrediction = () => {
             Search
           </button>
         </div>
-        <div className={styles.listContainer}></div>
+        <div className={styles.listContainer}>
+          <ScrollableList>
+            {predictions.map(([des, energy, ip, date, year, dist], index) => (
+              <div key={index}>
+                {`${des} ${energy} ${ip} ${date} ${year} ${dist}`}
+              </div>
+            ))}
+          </ScrollableList>
+        </div>
       </div>
     </>
   );

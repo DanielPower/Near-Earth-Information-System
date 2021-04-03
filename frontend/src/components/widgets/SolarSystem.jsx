@@ -16,6 +16,7 @@ const SolarSystem = () => {
   const [planetData, setPlanetData] = useState([]);
   const [inputData, setInputData] = useState('100');
   const [planetName, setPlanetName] = useState('~');
+  console.log(planetData);
   useEffect(() => {
     if (planet) {
       axios
@@ -100,7 +101,6 @@ const SolarSystem = () => {
       <div className={styles.planets}>
         <div className={styles.inputBox}>
           <input
-            value={inputData}
             className={styles.inputField}
             placeholder="optional distance (100 by default)"
             onChange={(event) => {
@@ -120,11 +120,30 @@ const SolarSystem = () => {
         ))}
         <div className={styles.listContainer}>
           <ScrollableList>
-            {planetData.map(({ data }) => (
-              <div key={data} className={styles.displayData}>
-                {data}
-              </div>
-            ))}
+            {planetData.map(
+              (
+                [
+                  des,
+                  _orbit_id,
+                  _jd,
+                  cd,
+                  dist,
+                  _dist_min,
+                  _dist_max,
+                  _v_rel,
+                  _v_inf,
+                  _t_sigma_f,
+                  _h,
+                ],
+                index,
+              ) => (
+                <div key={index} className={styles.scroll}>
+                  <div className={styles.listItems}>{`${des}`}</div>
+                  <div className={styles.listItems}>{`${cd}`}</div>
+                  <div className={styles.listItems}>{` ${dist}`}</div>
+                </div>
+              ),
+            )}
           </ScrollableList>
         </div>
       </div>
