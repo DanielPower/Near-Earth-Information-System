@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import dayjs from 'dayjs';
 import useAxios from 'axios-hooks';
 import ScrollableList from '../ScrollableList/ScrollableList';
+import styles from '../Countdown.module.css';
 
 const Countdown = () => {
   const [minDate, setMinDate] = useState(dayjs().format('YYYY-MM-DD'));
@@ -39,7 +40,7 @@ const Countdown = () => {
       <label>NEO(Near Earth Objects</label>
       <div>
         <label>Object:</label>
-        <select name="object" value={filter} onChange={(event) => setFilter(event.target.value)}>
+        <select name="object" value={filter} onChange={(event) => setFilter(event.target.value)} className={styles.textboxes}>
           <option>pha</option>
           <option>nea</option>
           <option>comet</option>
@@ -47,8 +48,10 @@ const Countdown = () => {
         
         <br />
         <label>Maximum distance:</label>
-        <input value={tempDistance} onChange={(event) => setTempDistance(event.target.value)}/>
-        <button type="button" value={distance} onClick={() => setDistance(tempDistance)}>
+        <input value={tempDistance} 
+          onChange={(event) => setTempDistance(event.target.value)} 
+          className={styles.textboxes}/>
+        <button type="button" value={distance} onClick={() => setDistance(tempDistance)} className={styles.textboxes}>
           Add
         </button>
         <br />
@@ -58,13 +61,14 @@ const Countdown = () => {
           type="date"
           value={minDate}
           onChange={(event) => setMinDate(event.target.value)}
-        />
+          className={styles.textboxes}/>
         <input
           type="date"
           value={maxDate}
           onChange={(event) => setMaxDate(event.target.value)}
+          className={styles.textboxes}
         />
-        <button type="button">Add</button>
+        <button type="button" className={styles.textboxes}>Add</button>
         <br />
       </div>
 
