@@ -31,7 +31,7 @@ const Nhats = () => {
           ['Observation end date', 'obsEnd'],
           ['Percieved brightness', 'obsMag'],
         ].map(([title, key]) => (
-          <div className={styles.key}>
+          <div key={key} className={styles.key}>
             {`${title}: ${nhatss[selectedNhats][key]}`}
           </div>
         ))}

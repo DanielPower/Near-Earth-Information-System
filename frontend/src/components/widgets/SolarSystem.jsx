@@ -16,7 +16,7 @@ const SolarSystem = () => {
   const [planetData, setPlanetData] = useState([]);
   const [inputData, setInputData] = useState('100');
   const [planetName, setPlanetName] = useState('~');
-  console.log(planetData);
+
   useEffect(() => {
     if (planet) {
       axios
@@ -111,6 +111,7 @@ const SolarSystem = () => {
         <div className={styles.planetText}>{planetName}</div>
         {planets.map((planet) => (
           <img
+            key={planet.name}
             src={planet.img}
             className={planet.className}
             onClick={planet.onClick}
@@ -129,15 +130,15 @@ const SolarSystem = () => {
               (
                 [
                   des,
-                  _orbit_id,
+                  _orbitId,
                   _jd,
                   cd,
                   dist,
-                  _dist_min,
-                  _dist_max,
-                  _v_rel,
-                  _v_inf,
-                  _t_sigma_f,
+                  _distMin,
+                  _distMax,
+                  _vRel,
+                  _vInf,
+                  _tSigmaF,
                   _h,
                 ],
                 index,

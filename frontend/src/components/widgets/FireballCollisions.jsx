@@ -4,9 +4,9 @@ import styles from './fireballCollisions.module.css';
 import ScrollableList from '../ScrollableList/ScrollableList';
 
 const FireballCollision = () => {
-  const [latInput, setLatInput] = useState(null);
-  const [lonInput, setLonInput] = useState(null);
-  const [distInput, setDistInput] = useState(null);
+  const [latInput, setLatInput] = useState('');
+  const [lonInput, setLonInput] = useState('');
+  const [distInput, setDistInput] = useState('');
 
   const [{ data: collisions, loading, error }, refetchCollisions] = useAxios(
     {

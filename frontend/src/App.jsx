@@ -6,6 +6,7 @@ import FireballCollision from './components/widgets/FireballCollisions';
 import FireballPrediction from './components/widgets/FireballPredictions';
 import NearEarthObjects from './components/widgets/Countdown';
 import Messenger from './components/widgets/Messenger';
+import InternationalSpaceStation from './components/widgets/InternationalSpaceStation';
 import Twitter from './components/widgets/Twitter';
 import styles from './App.module.css';
 
@@ -21,7 +22,7 @@ const App = () => {
     Component: SolarSystem,
   };
   const fireballCollision = {
-    title: 'Past FireBall Collisions',
+    title: 'Past Fireball Collisions',
     Component: FireballCollision,
   };
   const fireballPrediction = {
@@ -32,18 +33,22 @@ const App = () => {
     title: 'NASA Twitter',
     Component: Twitter,
   };
+  const internationalSpaceStation = {
+    title: 'International Space Station Location',
+    Component: InternationalSpaceStation,
+  };
 
   const rows = [
     [solarSystem, nhats],
-    [fireballCollision],
-    [fireballPrediction, nearEarthObjects],
+    [fireballCollision, fireballPrediction],
+    [nearEarthObjects, internationalSpaceStation],
     [twitter, messenger],
   ];
 
   return (
     <>
-      {rows.map((widgets) => (
-        <div className={styles.row}>
+      {rows.map((widgets, index) => (
+        <div key={index} className={styles.row}>
           {widgets.map(({ title, Component }) => (
             <Widget key={title} title={title}>
               <Component />
