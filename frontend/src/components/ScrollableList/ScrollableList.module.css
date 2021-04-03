@@ -1,10 +1,11 @@
 .scrollableList {
   overflow-y: auto;
   max-height: 300px;
+  width: 100%;
 }
 
 .listItem:hover {
-  background-color: #282C34
+  background-color: #282c34;
 }
 
 .title {

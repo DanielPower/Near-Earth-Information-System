@@ -1,12 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import useAxios from 'axios-hooks';
 import styles from './fireballCollisions.module.css';
+import ScrollableList from '../ScrollableList/ScrollableList';
 
 const FireballCollision = () => {
-  const [fireball, setFireball] = useState(null);
   const [latInput, setLatInput] = useState(null);
   const [lonInput, setLonInput] = useState(null);
   const [distInput, setDistInput] = useState(null);
+
+  const [{ data: collisions, loading, error }, refetchCollisions] = useAxios(
+    {
+      url: 'http://localhost:3000/collisions',
+      params: {
+        lat: latInput,
+        lon: lonInput,
+        distance: distInput,
+      },
+    },
+    { manual: true },
+  );
+  if (error) return 'error';
+  console.log(collisions);
+
   return (
     <>
       <div className={styles.centerContents}>
@@ -48,14 +63,26 @@ const FireballCollision = () => {
             <button
               type="button"
               className={styles.searchButton}
-              onClick={(() => setLatInput, setLonInput, setDistInput)}
+              onClick={() => refetchCollisions()}
             >
               Search
             </button>
           </div>
         </div>
       </div>
-      <div className={styles.dataDisplay}></div>
+      <div className={styles.dataDisplay}>
+        {loading
+          ? 'loading'
+          : collisions && (
+              <ScrollableList>
+                {collisions.map(([date, impactEnergy, lat, lon], index) => (
+                  <div
+                    key={index}
+                  >{`${date} ${impactEnergy} ${lat} ${lon}`}</div>
+                ))}
+              </ScrollableList>
+            )}
+      </div>
     </>
   );
 };
