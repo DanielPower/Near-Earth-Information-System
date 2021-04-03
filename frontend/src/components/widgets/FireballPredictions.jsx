@@ -4,10 +4,10 @@ import styles from './FireballPredictions.module.css';
 import ScrollableList from '../ScrollableList/ScrollableList';
 
 const FireballPrediction = () => {
-  const [minYear, setyearMin] = useState(null);
-  const [maxYear, setyearMax] = useState(null);
-  const [ipMin, setIpMin] = useState(null);
-  const [ipMax, setIpMax] = useState(null);
+  const [minYear, setyearMin] = useState('');
+  const [maxYear, setyearMax] = useState('');
+  const [ipMin, setIpMin] = useState('');
+  const [ipMax, setIpMax] = useState('');
 
   const [{ data: predictions, loading, error }, refetchCollisions] = useAxios(
     {
