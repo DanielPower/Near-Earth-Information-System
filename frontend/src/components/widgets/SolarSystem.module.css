@@ -61,7 +61,7 @@
 
 .listContainer {
   display: flex;
-  border: solid 3px white;
+  border: solid 2px white;
   border-radius: 7px;
   height: 100px;
   width: 100%;
