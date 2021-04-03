@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import useAxios from 'axios-hooks';
 import ScrollableList from '../ScrollableList/ScrollableList';
+import dayjs from 'dayjs';
 import styles from '../Messenger.module.css';
 
 const Messenger = () => {
@@ -22,50 +23,49 @@ const Messenger = () => {
   if (loading) return 'loading';
   if (error) return 'error';
   let tempMessage = Array.from(messages);
-  
+
   return (
     <>
-      
-      <div>
+      <div className={styles.row}>
         <input
           placeholder="Title"
           onChange={(event) => setTitleValue(event.target.value)}
           className={styles.textboxes}
         />
-      </div>
-      <div>
         <input
           placeholder="Message"
           onChange={(event) => setMessageValue(event.target.value)}
           className={styles.textboxes}
         />
+        <button
+          className={styles.textboxes}
+          type="button"
+          onClick={() => {
+            postMessage({
+              data: {
+                title: titleValue,
+                body: messageValue,
+              },
+            }).then(() => {
+              reloadMessages();
+            });
+          }}
+        >
+          Submit
+        </button>
       </div>
-      <button
-        className={styles.textboxes}
-        type="button"
-        onClick={() => {
-          postMessage({
-            data: {
-              title: titleValue,
-              body: messageValue,
-            },
-          }).then(() => {
-            reloadMessages();
-          });
-        }}
-      >
-        Submit
-      </button>
       <div className={styles.board}>
         <ScrollableList>
-          {tempMessage.reverse().map((message) => (
-            <div key={message._id}>
-              {message.title}<br/>
-              {message.body}<br/>
-              {message.date}<br/>
-              <br/>
-            </div>
-          ))}
+          {tempMessage.reverse().map((message) => {
+            const date = dayjs(message.date).format('YYYY-MM-DD h:mmA');
+            return (
+              <div className={styles.message} key={message._id}>
+                <div className={styles.title}>{message.title}</div>
+                <div className={styles.date}>{date}</div>
+                <div className={styles.body}>{message.body}</div>
+              </div>
+            );
+          })}
         </ScrollableList>
       </div>
     </>
