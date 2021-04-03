@@ -2,3 +2,13 @@
   display: flex;
   flex-direction: row;
 }
+
+.logo {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Audiowide';
+  font-size: 3rem;
+}

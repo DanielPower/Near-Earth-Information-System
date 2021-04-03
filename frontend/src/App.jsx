@@ -47,6 +47,10 @@ const App = () => {
 
   return (
     <>
+      <div className={styles.logo}>
+        <img src="logo.png" />
+        Near Earth Information System
+      </div>
       {rows.map((widgets, index) => (
         <div key={index} className={styles.row}>
           {widgets.map(({ title, Component }) => (
