@@ -126,30 +126,32 @@ const SolarSystem = () => {
         </div>
         <div className={styles.listContainer}>
           <ScrollableList>
-            {planetData.map(
-              (
-                [
-                  des,
-                  _orbitId,
-                  _jd,
-                  cd,
-                  dist,
-                  _distMin,
-                  _distMax,
-                  _vRel,
-                  _vInf,
-                  _tSigmaF,
-                  _h,
-                ],
-                index,
-              ) => (
-                <div key={index} className={styles.itemContainer}>
-                  <div className={styles.listItems}>{des}</div>
-                  <div className={styles.listItems}>{cd}</div>
-                  <div className={styles.listItems}>{dist}</div>
-                </div>
-              ),
-            )}
+            {planetData
+              ? planetData.map(
+                  (
+                    [
+                      des,
+                      _orbitId,
+                      _jd,
+                      cd,
+                      dist,
+                      _distMin,
+                      _distMax,
+                      _vRel,
+                      _vInf,
+                      _tSigmaF,
+                      _h,
+                    ],
+                    index,
+                  ) => (
+                    <div key={index} className={styles.itemContainer}>
+                      <div className={styles.listItems}>{des}</div>
+                      <div className={styles.listItems}>{cd}</div>
+                      <div className={styles.listItems}>{dist}</div>
+                    </div>
+                  ),
+                )
+              : null}
           </ScrollableList>
         </div>
       </div>
