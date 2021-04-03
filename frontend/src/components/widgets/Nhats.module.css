@@ -11,3 +11,9 @@
 .value {
   font-size: 1.25rem;
 }
+
+.title {
+  display: flex;
+  justify-content: center;
+  font-family: 'Audiowide';
+}
