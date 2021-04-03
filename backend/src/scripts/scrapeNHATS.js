@@ -30,8 +30,8 @@ const scrapeNHATSs = async () => {
           des,
           minSize,
           maxSize,
-          obsStart,
-          obsEnd,
+          obsStart: new Date(obsStart),
+          obsEnd: new Date(obsEnd),
           obsMag,
         }).catch((error) => {
           // Ignore duplicate values

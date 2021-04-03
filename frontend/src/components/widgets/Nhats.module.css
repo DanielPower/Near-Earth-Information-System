@@ -1,0 +1,13 @@
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.key {
+  font-size: 1.5rem;
+}
+
+.value {
+  font-size: 1.25rem;
+}

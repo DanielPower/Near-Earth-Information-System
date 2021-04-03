@@ -1,75 +1,48 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import useAxios from 'axios-hooks';
 import ScrollableList from '../ScrollableList/ScrollableList';
+import styles from './Nhats.module.css';
 
 const Nhats = () => {
-  const [selectedNhatsDes, setSelectedNhatsDes] = useState(null);
+  const [selectedNhats, setSelectedNhats] = useState(null);
+  const [{ data: nhatss, loading, error }] = useAxios(
+    'http://localhost:3000/nhats',
+  );
 
-  const [
-    { data: { data: nhatss } = {}, loading: nhatsLoading, error: nhatsError },
-  ] = useAxios('https://ssd-api.jpl.nasa.gov/nhats.api');
+  if (loading) {
+    return 'loading';
+  }
 
-  const [
-    {
-      data: selectedNhatsData,
-      loading: selectedNhatsLoading,
-      error: selectedNhatsError,
-    },
-    getSelectedNhatsData,
-  ] = useAxios('https://ssd-api.jpl.nasa.gov/nhats.api', { manual: true });
-
-  console.log(selectedNhatsData);
-
-  useEffect(() => {
-    if (selectedNhatsDes) {
-      getSelectedNhatsData({
-        params: {
-          des: selectedNhatsDes,
-        },
-      });
-    }
-  }, [selectedNhatsDes]);
-
-  if (nhatsError || selectedNhatsError) {
+  if (error) {
     return 'error';
   }
 
-  if (selectedNhatsDes) {
-    if (selectedNhatsLoading) {
-      return 'loading';
-    }
-
+  if (selectedNhats) {
     return (
       <>
-        <button type="button" onClick={() => setSelectedNhatsDes(null)}>
+        <button type="button" onClick={() => setSelectedNhats(null)}>
           Back
         </button>
         {[
           ['Designation', 'des'],
-          ['Date computed', 'computed'],
-          ['Size at nearest point in approach', 'max_size'],
-          ['Observation start date', 'obs_start'],
-          ['Observation end date', 'obs_end'],
-          ['Percieved brightness', 'obs_mag'],
+          ['Size at furthest point in approach', 'minSize'],
+          ['Size at nearest point in approach', 'maxSize'],
+          ['Observation start date', 'obsStart'],
+          ['Observation end date', 'obsEnd'],
+          ['Percieved brightness', 'obsMag'],
         ].map(([title, key]) => (
-          <span>
-            <div>{title}</div>
-            <div>{selectedNhatsData[key]}</div>
-          </span>
+          <div className={styles.key}>
+            {`${title}: ${nhatss[selectedNhats][key]}`}
+          </div>
         ))}
-        <div>{selectedNhatsDes}</div>
       </>
     );
-  }
-
-  if (nhatsLoading) {
-    return 'loading';
   }
 
   return (
     <ScrollableList>
       {nhatss.map((nhats, index) => (
-        <div key={index} onClick={() => setSelectedNhatsDes(nhats.des)}>
+        <div key={index} onClick={() => setSelectedNhats(index)}>
           {nhats.des}
         </div>
       ))}
