@@ -118,6 +118,11 @@ const SolarSystem = () => {
             onMouseLeave={() => setPlanetName('~')}
           />
         ))}
+        <div className={styles.titleContainer}>
+          <div>Descriptor</div>
+          <div>Date</div>
+          <div>Distance</div>
+        </div>
         <div className={styles.listContainer}>
           <ScrollableList>
             {planetData.map(
@@ -137,10 +142,10 @@ const SolarSystem = () => {
                 ],
                 index,
               ) => (
-                <div key={index} className={styles.scroll}>
-                  <div className={styles.listItems}>{`${des}`}</div>
-                  <div className={styles.listItems}>{`${cd}`}</div>
-                  <div className={styles.listItems}>{` ${dist}`}</div>
+                <div key={index} className={styles.itemContainer}>
+                  <div className={styles.listItems}>{des}</div>
+                  <div className={styles.listItems}>{cd}</div>
+                  <div className={styles.listItems}>{dist}</div>
                 </div>
               ),
             )}
